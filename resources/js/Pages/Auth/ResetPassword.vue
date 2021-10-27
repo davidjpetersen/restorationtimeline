@@ -3,7 +3,7 @@
 
     <jet-authentication-card>
         <template #logo>
-            <jet-authentication-card-logo />
+            <b>Restoration</b> Timeline
         </template>
 
         <jet-validation-errors class="mb-4" />
@@ -37,7 +37,6 @@
     import { defineComponent } from 'vue';
     import { Head } from '@inertiajs/inertia-vue3';
     import JetAuthenticationCard from '@/Jetstream/AuthenticationCard.vue'
-    import JetAuthenticationCardLogo from '@/Jetstream/AuthenticationCardLogo.vue'
     import JetButton from '@/Jetstream/Button.vue'
     import JetInput from '@/Jetstream/Input.vue'
     import JetLabel from '@/Jetstream/Label.vue'
@@ -47,7 +46,6 @@
         components: {
             Head,
             JetAuthenticationCard,
-            JetAuthenticationCardLogo,
             JetButton,
             JetInput,
             JetLabel,

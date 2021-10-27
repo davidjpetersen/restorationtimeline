@@ -3,7 +3,7 @@
 
     <jet-authentication-card>
         <template #logo>
-            <jet-authentication-card-logo />
+            <b>Restoration</b> Timeline
         </template>
 
         <div class="mb-4 text-sm text-gray-600">
@@ -29,7 +29,6 @@
 <script>
     import { defineComponent } from 'vue'
     import JetAuthenticationCard from '@/Jetstream/AuthenticationCard.vue'
-    import JetAuthenticationCardLogo from '@/Jetstream/AuthenticationCardLogo.vue'
     import JetButton from '@/Jetstream/Button.vue'
     import { Head, Link } from '@inertiajs/inertia-vue3';
 
@@ -37,7 +36,6 @@
         components: {
             Head,
             JetAuthenticationCard,
-            JetAuthenticationCardLogo,
             JetButton,
             Link,
         },
