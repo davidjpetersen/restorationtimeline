@@ -24,6 +24,20 @@ Route::get('/', function () {
     ]);
 });
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->name('dashboard');
+Route::middleware(['auth:sanctum', 'verified'])->group(function () {
+    Route::get('/dashboard', function () {
+        return Inertia::render('Dashboard');
+    })->name('dashboard');
+    Route::get('/events', function () {
+        return Inertia::render('Events');
+    })->name('events');
+    Route::get('/people', function () {
+        return Inertia::render('People');
+    })->name('people');
+    Route::get('/places', function () {
+        return Inertia::render('Places');
+    })->name('places');
+    Route::get('/sources', function () {
+        return Inertia::render('Sources');
+    })->name('sources');
+});

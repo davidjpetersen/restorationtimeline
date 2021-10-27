@@ -13,7 +13,7 @@
                             <!-- Logo -->
                             <div class="flex-shrink-0 flex items-center">
                                 <Link :href="route('dashboard')">
-                                    <jet-application-mark class="block h-9 w-auto" />
+                                    <b>Restoration</b> Timeline
                                 </Link>
                             </div>
 
@@ -21,6 +21,22 @@
                             <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                                 <jet-nav-link :href="route('dashboard')" :active="route().current('dashboard')">
                                     Dashboard
+                                </jet-nav-link>
+
+                                <jet-nav-link :href="route('events')" :active="route().current('events')">
+                                    Events
+                                </jet-nav-link>
+
+                                <jet-nav-link :href="route('people')" :active="route().current('people')">
+                                    People
+                                </jet-nav-link>
+
+                                <jet-nav-link :href="route('places')" :active="route().current('places')">
+                                    Places
+                                </jet-nav-link>
+
+                                <jet-nav-link :href="route('sources')" :active="route().current('sources')">
+                                    Sources
                                 </jet-nav-link>
                             </div>
                         </div>
@@ -233,7 +249,7 @@
 
 <script>
     import { defineComponent } from 'vue'
-    import JetApplicationMark from '@/Jetstream/ApplicationMark.vue'
+
     import JetBanner from '@/Jetstream/Banner.vue'
     import JetDropdown from '@/Jetstream/Dropdown.vue'
     import JetDropdownLink from '@/Jetstream/DropdownLink.vue'
@@ -248,7 +264,6 @@
 
         components: {
             Head,
-            JetApplicationMark,
             JetBanner,
             JetDropdown,
             JetDropdownLink,
