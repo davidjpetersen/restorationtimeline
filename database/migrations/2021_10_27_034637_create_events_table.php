@@ -15,7 +15,17 @@ class CreateEventsTable extends Migration
     {
         Schema::create('events', function (Blueprint $table) {
             $table->id();
+            $table->text('name');
+            $table->text('description');
+            $table->text('disambiguatingDescription');
+            $table->json('identifer');
+            $table->json('sameAs');
+            $table->dateTime('startDate');
+            $table->dateTime('endDate');
+            $table->bigInteger('parentID');
+            $table->enum('status', ['Auto-Draft', 'Draft', 'Review', 'Published', 'Retired']);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
