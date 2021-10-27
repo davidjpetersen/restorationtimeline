@@ -29,7 +29,7 @@ class CreateOrganizationsTable extends Migration
             $table->string('telephone')->nullable();
             $table->json('identifier')->nullable();
             $table->json('sameAs')->nullable();
-            $table->timestamps()->nullable();
+            $table->timestamps();
         });
     }
 

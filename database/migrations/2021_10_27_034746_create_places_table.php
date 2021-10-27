@@ -28,14 +28,14 @@ class CreatePlacesTable extends Migration
             $table->string('latitude')->nullable();
             $table->string('logitude')->nullable();
             $table->string('logo')->nullable();
-            $table->number('maximumAttendeeCapacity')->nullable();
+            $table->bigInteger('maximumAttendeeCapacity')->nullable();
             $table->text('openingHoursSpecification')->nullable();
             $table->boolean('publicAccess')->nullable();
             $table->string('slogan')->nullable();
             $table->string('tourBookingPage')->nullable();
             $table->json('identifier')->nullable();
             $table->json('sameAs')->nullable();
-            $table->timestamps()->nullable();
+            $table->timestamps();
         });
     }
 
