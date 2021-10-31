@@ -31,7 +31,6 @@
     },
     "dependencies": {
         "primeicons": "^4.1.0",
-        "primevue": "^3.8.2",
-        "laravel/nova": "*"
+        "primevue": "^3.8.2"
     }
 }

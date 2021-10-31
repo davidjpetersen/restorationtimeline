@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\organization;
+use App\Models\Organization;
 use Illuminate\Http\Request;
 
 class OrganizationController extends Controller
@@ -41,7 +41,7 @@ class OrganizationController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\organization  $organization
+     * @param  \App\Models\Organization  $organization
      * @return \Illuminate\Http\Response
      */
     public function show(organization $organization)
@@ -52,7 +52,7 @@ class OrganizationController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\organization  $organization
+     * @param  \App\Models\Organization  $organization
      * @return \Illuminate\Http\Response
      */
     public function edit(organization $organization)
@@ -64,7 +64,7 @@ class OrganizationController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\organization  $organization
+     * @param  \App\Models\Organization  $organization
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, organization $organization)
@@ -75,7 +75,7 @@ class OrganizationController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\organization  $organization
+     * @param  \App\Models\Organization  $organization
      * @return \Illuminate\Http\Response
      */
     public function destroy(organization $organization)

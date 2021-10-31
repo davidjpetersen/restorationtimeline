@@ -3,7 +3,7 @@
 namespace App\Policies;
 
 use App\Models\User;
-use App\Models\person;
+use App\Models\Person;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class PersonPolicy
@@ -18,19 +18,19 @@ class PersonPolicy
      */
     public function viewAny(User $user)
     {
-        //
+        return true;
     }
 
     /**
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\person  $person
+     * @param  \App\Models\Person  $person
      * @return \Illuminate\Auth\Access\Response|bool
      */
     public function view(User $user, person $person)
     {
-        //
+        return true;
     }
 
     /**
@@ -41,54 +41,54 @@ class PersonPolicy
      */
     public function create(User $user)
     {
-        //
+        return true;
     }
 
     /**
      * Determine whether the user can update the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\person  $person
+     * @param  \App\Models\Person  $person
      * @return \Illuminate\Auth\Access\Response|bool
      */
     public function update(User $user, person $person)
     {
-        //
+        return true;
     }
 
     /**
      * Determine whether the user can delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\person  $person
+     * @param  \App\Models\Person  $person
      * @return \Illuminate\Auth\Access\Response|bool
      */
     public function delete(User $user, person $person)
     {
-        //
+        return true;
     }
 
     /**
      * Determine whether the user can restore the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\person  $person
+     * @param  \App\Models\Person  $person
      * @return \Illuminate\Auth\Access\Response|bool
      */
     public function restore(User $user, person $person)
     {
-        //
+        return true;
     }
 
     /**
      * Determine whether the user can permanently delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\person  $person
+     * @param  \App\Models\Person  $person
      * @return \Illuminate\Auth\Access\Response|bool
      */
     public function forceDelete(User $user, person $person)
     {
-        //
+        return true;
     }
 }

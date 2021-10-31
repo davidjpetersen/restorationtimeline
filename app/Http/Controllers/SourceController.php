@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\source;
+use App\Models\Source;
 use Illuminate\Http\Request;
 
 class SourceController extends Controller
@@ -41,7 +41,7 @@ class SourceController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\source  $source
+     * @param  \App\Models\Source  $source
      * @return \Illuminate\Http\Response
      */
     public function show(source $source)
@@ -52,7 +52,7 @@ class SourceController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\source  $source
+     * @param  \App\Models\Source  $source
      * @return \Illuminate\Http\Response
      */
     public function edit(source $source)
@@ -64,7 +64,7 @@ class SourceController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\source  $source
+     * @param  \App\Models\Source  $source
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, source $source)
@@ -75,7 +75,7 @@ class SourceController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\source  $source
+     * @param  \App\Models\Source  $source
      * @return \Illuminate\Http\Response
      */
     public function destroy(source $source)

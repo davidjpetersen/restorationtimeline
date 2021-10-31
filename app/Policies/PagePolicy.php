@@ -3,7 +3,7 @@
 namespace App\Policies;
 
 use App\Models\User;
-use App\Models\page;
+use App\Models\Page;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class PagePolicy
@@ -18,19 +18,19 @@ class PagePolicy
      */
     public function viewAny(User $user)
     {
-        //
+        return true;
     }
 
     /**
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\page  $page
+     * @param  \App\Models\Page  $page
      * @return \Illuminate\Auth\Access\Response|bool
      */
     public function view(User $user, page $page)
     {
-        //
+        return true;
     }
 
     /**
@@ -41,54 +41,54 @@ class PagePolicy
      */
     public function create(User $user)
     {
-        //
+        return true;
     }
 
     /**
      * Determine whether the user can update the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\page  $page
+     * @param  \App\Models\Page  $page
      * @return \Illuminate\Auth\Access\Response|bool
      */
     public function update(User $user, page $page)
     {
-        //
+        return true;
     }
 
     /**
      * Determine whether the user can delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\page  $page
+     * @param  \App\Models\Page  $page
      * @return \Illuminate\Auth\Access\Response|bool
      */
     public function delete(User $user, page $page)
     {
-        //
+        return true;
     }
 
     /**
      * Determine whether the user can restore the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\page  $page
+     * @param  \App\Models\Page  $page
      * @return \Illuminate\Auth\Access\Response|bool
      */
     public function restore(User $user, page $page)
     {
-        //
+        return true;
     }
 
     /**
      * Determine whether the user can permanently delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\page  $page
+     * @param  \App\Models\Page  $page
      * @return \Illuminate\Auth\Access\Response|bool
      */
     public function forceDelete(User $user, page $page)
     {
-        //
+        return true;
     }
 }
