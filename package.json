@@ -10,6 +10,8 @@
         "production": "mix --production"
     },
     "devDependencies": {
+        "@headlessui/vue": "^1.4.1",
+        "@heroicons/vue": "^1.0.5",
         "@inertiajs/inertia": "^0.10.0",
         "@inertiajs/inertia-vue3": "^0.5.1",
         "@inertiajs/progress": "^0.2.6",
@@ -21,8 +23,15 @@
         "lodash": "^4.17.19",
         "postcss": "^8.1.14",
         "postcss-import": "^12.0.1",
+        "sass": "^1.43.4",
+        "sass-loader": "^12.3.0",
         "tailwindcss": "^2.0.1",
         "vue": "^3.0.5",
         "vue-loader": "^16.1.2"
+    },
+    "dependencies": {
+        "primeicons": "^4.1.0",
+        "primevue": "^3.8.2",
+        "laravel/nova": "*"
     }
 }

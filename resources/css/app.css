@@ -1,3 +1,14 @@
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+.p-carousel .p-carousel-content .p-carousel-prev,
+.p-carousel .p-carousel-content .p-carousel-next {
+    box-shadow: -2 px 4 px 10 px 0 var(--shadow--dark);
+    height: 48 px;
+    width: 48 px;
+}
+
+.p-carousel-indicators{
+    display: hidden!important;
+}
