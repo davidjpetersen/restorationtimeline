@@ -3,7 +3,13 @@
 namespace App\Nova;
 
 use Illuminate\Http\Request;
+use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\ID;
+use Laravel\Nova\Fields\KeyValue;
+use Mauricewijnia\NovaMapsAddress\MapsAddress;
+use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Fields\Textarea;
+use Inspheric\Fields\Url;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Place extends Resource
@@ -40,7 +46,31 @@ class Place extends Resource
     public function fields(Request $request)
     {
         return [
-            ID::make(__('ID'), 'id')->sortable(),
+            ID::make('id')->sortable(),
+            Text::make('Name')->sortable(),
+            Boolean::make('Public Access', 'publicAccess'),
+            Boolean::make('Is Accessible For Free', 'isAccessibleForFree'),
+            Text::make('Alternative Name', 'alternativeName')->sortable(),
+            Textarea::make('Description'),
+            // Textarea::make('Disambiguating Description'),
+            MapsAddress::make('address')
+                ->zoom(4)
+                ->center(['lat' => 38.850033, 'lng' => -87.6500523]),
+            Text::make('Fax Number', 'faxNumber'),
+            Text::make('Telephone'),
+            Text::make('Slogan'),
+            Url::make('Url'),
+            Url::make('Tour Booking Page', 'tourBookingPage'),
+            // KeyValue::make('Identifier')
+            //     ->rules('json')
+            //     ->keyLabel('Item') // Customize the key heading
+            //     ->valueLabel('Label') // Customize the value heading
+            //     ->actionText('Add Item'), // Customize the "add row" button text,
+            // KeyValue::make('Same As')
+            //     ->rules('json')
+            //     ->keyLabel('Item') // Customize the key heading
+            //     ->valueLabel('Label') // Customize the value heading
+            //     ->actionText('Add Item'), // Customize the "add row" button text,
         ];
     }
 

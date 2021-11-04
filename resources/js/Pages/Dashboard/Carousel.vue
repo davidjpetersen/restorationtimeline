@@ -13,7 +13,7 @@
         <template #item="slotProps">
             <div>
                 <img
-                    src="https://www.lorempixel.com/335/188"
+                    :src="slotProps.data.image"
                     :alt="slotProps.data.name"
                     class="product-image"
                 />

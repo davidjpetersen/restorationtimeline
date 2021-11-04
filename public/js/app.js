@@ -21439,6 +21439,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Layouts_AppLayout_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Layouts/AppLayout.vue */ "./resources/js/Layouts/AppLayout.vue");
 /* harmony import */ var _Dashboard_Hero_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Dashboard/Hero.vue */ "./resources/js/Pages/Dashboard/Hero.vue");
 /* harmony import */ var _Dashboard_Carousel_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Dashboard/Carousel.vue */ "./resources/js/Pages/Dashboard/Carousel.vue");
+/* harmony import */ var _images_usa_png__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../images/usa.png */ "./resources/images/usa.png");
+/* harmony import */ var _images_early_png__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../images/early.png */ "./resources/images/early.png");
+/* harmony import */ var _images_newyork_png__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../images/newyork.png */ "./resources/images/newyork.png");
+/* harmony import */ var _images_ohio_png__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../images/ohio.png */ "./resources/images/ohio.png");
+/* harmony import */ var _images_missouri_png__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../images/missouri.png */ "./resources/images/missouri.png");
+/* harmony import */ var _images_illinois_png__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../images/illinois.png */ "./resources/images/illinois.png");
+/* harmony import */ var _images_exedous_png__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../images/exedous.png */ "./resources/images/exedous.png");
+/* harmony import */ var _images_utah_png__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../images/utah.png */ "./resources/images/utah.png");
+
+
+
+
+
+
+
+
 
 
 
@@ -21454,114 +21470,44 @@ __webpack_require__.r(__webpack_exports__);
     return {
       products: [{
         id: "1000",
-        code: "f230fh0g3",
-        name: "Bamboo Watch",
-        description: "Product Description",
-        image: "bamboo-watch.jpg",
-        price: 65,
-        category: "Accessories",
-        quantity: 24,
-        inventoryStatus: "INSTOCK",
-        rating: 5
+        name: "US History",
+        description: "What was the context for the restoration?",
+        image: _images_usa_png__WEBPACK_IMPORTED_MODULE_4__["default"]
       }, {
         id: "1001",
-        code: "nvklal433",
-        name: "Black Watch",
+        name: "Early Days",
         description: "Product Description",
-        image: "black-watch.jpg",
-        price: 72,
-        category: "Accessories",
-        quantity: 61,
-        inventoryStatus: "INSTOCK",
-        rating: 4
+        image: _images_early_png__WEBPACK_IMPORTED_MODULE_5__["default"]
       }, {
         id: "1002",
-        code: "zz21cz3c1",
-        name: "Blue Band",
+        name: "New York",
         description: "Product Description",
-        image: "blue-band.jpg",
-        price: 79,
-        category: "Fitness",
-        quantity: 2,
-        inventoryStatus: "LOWSTOCK",
-        rating: 3
+        image: _images_newyork_png__WEBPACK_IMPORTED_MODULE_6__["default"]
       }, {
         id: "1003",
-        code: "244wgerg2",
-        name: "Blue T-Shirt",
+        name: "Ohio",
         description: "Product Description",
-        image: "blue-t-shirt.jpg",
-        price: 29,
-        category: "Clothing",
-        quantity: 25,
-        inventoryStatus: "INSTOCK",
-        rating: 5
+        image: _images_ohio_png__WEBPACK_IMPORTED_MODULE_7__["default"]
       }, {
         id: "1004",
-        code: "h456wer53",
-        name: "Bracelet",
+        name: "Missouri",
         description: "Product Description",
-        image: "bracelet.jpg",
-        price: 15,
-        category: "Accessories",
-        quantity: 73,
-        inventoryStatus: "INSTOCK",
-        rating: 4
+        image: _images_missouri_png__WEBPACK_IMPORTED_MODULE_8__["default"]
       }, {
         id: "1005",
-        code: "av2231fwg",
-        name: "Brown Purse",
+        name: "Illinois",
         description: "Product Description",
-        image: "brown-purse.jpg",
-        price: 120,
-        category: "Accessories",
-        quantity: 0,
-        inventoryStatus: "OUTOFSTOCK",
-        rating: 4
+        image: _images_illinois_png__WEBPACK_IMPORTED_MODULE_9__["default"]
       }, {
-        id: "1006",
-        code: "bib36pfvm",
-        name: "Chakra Bracelet",
+        id: "1005",
+        name: "Exedous",
         description: "Product Description",
-        image: "chakra-bracelet.jpg",
-        price: 32,
-        category: "Accessories",
-        quantity: 5,
-        inventoryStatus: "LOWSTOCK",
-        rating: 3
+        image: _images_exedous_png__WEBPACK_IMPORTED_MODULE_10__["default"]
       }, {
-        id: "1007",
-        code: "mbvjkgip5",
-        name: "Galaxy Earrings",
+        id: "1005",
+        name: "Utah",
         description: "Product Description",
-        image: "galaxy-earrings.jpg",
-        price: 34,
-        category: "Accessories",
-        quantity: 23,
-        inventoryStatus: "INSTOCK",
-        rating: 5
-      }, {
-        id: "1008",
-        code: "vbb124btr",
-        name: "Game Controller",
-        description: "Product Description",
-        image: "game-controller.jpg",
-        price: 99,
-        category: "Electronics",
-        quantity: 2,
-        inventoryStatus: "LOWSTOCK",
-        rating: 4
-      }, {
-        id: "1009",
-        code: "cm230f032",
-        name: "Gaming Set",
-        description: "Product Description",
-        image: "gaming-set.jpg",
-        price: 299,
-        category: "Electronics",
-        quantity: 63,
-        inventoryStatus: "INSTOCK",
-        rating: 3
+        image: _images_utah_png__WEBPACK_IMPORTED_MODULE_11__["default"]
       }]
     };
   }
@@ -25484,7 +25430,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_hero), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_carousel, {
-        title: "Most Popular",
+        title: "Historical Periods",
         items: _ctx.products
       }, null, 8
       /* PROPS */
@@ -25529,7 +25475,7 @@ __webpack_require__.r(__webpack_exports__);
 var _hoisted_1 = {
   "class": "font-extrabold text-lg uppercase ml-12"
 };
-var _hoisted_2 = ["alt"];
+var _hoisted_2 = ["src", "alt"];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_Carousel = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Carousel", true);
 
@@ -25548,7 +25494,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     }),
     item: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function (slotProps) {
       return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
-        src: "https://www.lorempixel.com/335/188",
+        src: slotProps.data.image,
         alt: slotProps.data.name,
         "class": "product-image"
       }, null, 8
@@ -27598,6 +27544,126 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/vendor/primevue/resources/hue.png?f8505bd4d6f3e3aa435b72d1c045d4a7");
+
+/***/ }),
+
+/***/ "./resources/images/early.png":
+/*!************************************!*\
+  !*** ./resources/images/early.png ***!
+  \************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/early.png?da53a0526118c2a721f8bedbbecb70ed");
+
+/***/ }),
+
+/***/ "./resources/images/exedous.png":
+/*!**************************************!*\
+  !*** ./resources/images/exedous.png ***!
+  \**************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/exedous.png?f97aa106c349a55ee4b7560e3328cbab");
+
+/***/ }),
+
+/***/ "./resources/images/illinois.png":
+/*!***************************************!*\
+  !*** ./resources/images/illinois.png ***!
+  \***************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/illinois.png?b18a9255746a0db4c29cd98399db3415");
+
+/***/ }),
+
+/***/ "./resources/images/missouri.png":
+/*!***************************************!*\
+  !*** ./resources/images/missouri.png ***!
+  \***************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/missouri.png?aebf8a7be6fa3f2ee9a7e2300b41792e");
+
+/***/ }),
+
+/***/ "./resources/images/newyork.png":
+/*!**************************************!*\
+  !*** ./resources/images/newyork.png ***!
+  \**************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/newyork.png?0d7f56606fca9b20b74b004db3c98b91");
+
+/***/ }),
+
+/***/ "./resources/images/ohio.png":
+/*!***********************************!*\
+  !*** ./resources/images/ohio.png ***!
+  \***********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/ohio.png?52c2fbb0a6d0bc939e42f466cfc041a0");
+
+/***/ }),
+
+/***/ "./resources/images/usa.png":
+/*!**********************************!*\
+  !*** ./resources/images/usa.png ***!
+  \**********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/usa.png?175a1cb09b637572a55fd94f1ae85b8d");
+
+/***/ }),
+
+/***/ "./resources/images/utah.png":
+/*!***********************************!*\
+  !*** ./resources/images/utah.png ***!
+  \***********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/utah.png?26c53abe4e1d88f84f294d513e9289e6");
 
 /***/ }),
 

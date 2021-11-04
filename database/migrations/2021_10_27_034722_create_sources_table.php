@@ -15,6 +15,7 @@ class CreateSourcesTable extends Migration
     {
         Schema::create('sources', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
             $table->string('caption')->nullable();
             $table->string('embeddedTextCaption')->nullable();
             $table->string('exifData')->nullable();
@@ -52,11 +53,13 @@ class CreateSourcesTable extends Migration
             $table->string('discussionUrl')->nullable();
             $table->string('generate')->nullable();
             $table->string('alternativeHeadline')->nullable();
+            $table->string('headline')->nullable();
             $table->string('inLanguage')->nullable();
             $table->boolean('isFamilyFriendly')->nullable();
             $table->string('keywords')->nullable();
             $table->string('publication')->nullable();
             $table->string('publisher')->nullable();
+            $table->bigInteger('pageCount')->nullable();
             $table->string('publisherImprint')->nullable();
             $table->string('text')->nullable();
             $table->string('thumbnailUrl')->nullable();

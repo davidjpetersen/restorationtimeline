@@ -20,6 +20,8 @@ class CreatePeopleTable extends Migration
             $table->string('additionalName')->nullable();
             $table->string('familyName')->nullable();
             $table->string('honorificSuffix')->nullable();
+            $table->string('maidenName')->nullable();
+            $table->string('alsoKnownAs')->nullable();
             $table->string('address')->nullable();
             $table->string('affiliation')->nullable();
             $table->string('alumniOf')->nullable();

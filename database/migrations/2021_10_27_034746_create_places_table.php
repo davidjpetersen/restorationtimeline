@@ -19,7 +19,7 @@ class CreatePlacesTable extends Migration
             $table->string('alternativeName')->nullable();
             $table->text('description')->nullable();
             $table->text('disambiguatingDescription')->nullable();
-            $table->text('address')->nullable();
+            $table->json('address')->nullable();
             $table->text('geo')->nullable();
             $table->string('faxNumber')->nullable();
             $table->string('telephone')->nullable();
@@ -33,8 +33,9 @@ class CreatePlacesTable extends Migration
             $table->boolean('publicAccess')->nullable();
             $table->string('slogan')->nullable();
             $table->string('tourBookingPage')->nullable();
-            $table->json('identifier')->nullable();
-            $table->json('sameAs')->nullable();
+            $table->string('url')->nullable();
+            $table->text('identifier')->nullable();
+            $table->text('sameAs')->nullable();
             $table->timestamps();
         });
     }

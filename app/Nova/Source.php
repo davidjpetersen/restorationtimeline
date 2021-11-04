@@ -3,7 +3,15 @@
 namespace App\Nova;
 
 use Illuminate\Http\Request;
+use Laravel\Nova\Fields\Country;
+use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\ID;
+use Laravel\Nova\Fields\KeyValue;
+use Laravel\Nova\Fields\Number;
+use Laravel\Nova\Fields\Select;
+use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Fields\Textarea;
+use Inspheric\Fields\Url;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Source extends Resource
@@ -40,7 +48,41 @@ class Source extends Resource
     public function fields(Request $request)
     {
         return [
-            ID::make(__('ID'), 'id')->sortable(),
+            ID::make('id')->sortable(),
+            Text::make('Title')->sortable(),
+            Text::make('Headline')->sortable(),
+            Text::make('Alternative Headline')->sortable(),
+            Textarea::make('Abstract'),
+            Textarea::make('Description'),
+            // Textarea::make('Disambiguating Description'),
+            Textarea::make('Text'),
+
+            Text::make('Publisher')->sortable(),
+            Text::make('Publication')->sortable(),
+            Text::make('Publisher Imprint')->sortable(),
+            Number::make('Page Count')->min(1)->sortable(),
+            DateTime::make('Date Published')->sortable(),
+            Text::make('Copyright Notice')->sortable(),
+            Textarea::make('Citation')->sortable(),
+            Number::make('Copyright Year')->min(1)->max(2500)->sortable(),
+
+            Textarea::make('About')->sortable(),
+            Text::make('Caption')->sortable(),
+            Text::make('Embedded Text Caption')->sortable(),
+
+            Number::make('Content Size')->sortable(),
+            Number::make('Duration')->min(0)->sortable(),
+            DateTime::make('Start Time')->sortable(),
+            DateTime::make('End Time')->sortable(),
+            DateTime::make('Upload Date')->sortable(),
+            Number::make('Height')->min(1)->sortable(),
+            Number::make('Width')->min(1)->sortable(),
+            Country::make('Country of Origin', 'countryOfOrigin'),
+            Text::make('Credit Text')->sortable(),
+            Url::make('Content URL'),
+            Url::make('Archived At'),
+            Url::make('Discussion Url'),
+
         ];
     }
 
