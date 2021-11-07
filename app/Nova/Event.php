@@ -3,6 +3,7 @@
 namespace App\Nova;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Juul\Fields\BelongsToMany;
 use Laravel\Nova\Fields\Date;
 use Laravel\Nova\Fields\ID;
@@ -10,6 +11,7 @@ use Laravel\Nova\Fields\KeyValue;
 use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Textarea;
+use Laravel\Nova\Fields\Stack;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Event extends Resource
@@ -47,15 +49,21 @@ class Event extends Resource
     {
         return [
             // ID::make('id')->sortable(),
-            Text::make('Event Name', 'name'),
+            Stack::make('Details', [
+                Text::make('Event Name', 'name')->resolveUsing(function () {
+                    return Str::limit($this->resource->name, 30);
+                }),
+            ]),
+            
             Select::make('Status', 'status')->options(['Auto-Draft', 'Draft', 'Review', 'Published', 'Retired']),
             Textarea::make('Description', 'description')->sortable(),
             // Textarea::make( 'Disambiguation Description')->sortable(),
             // KeyValue::make('Identifier', 'identifier')->rules('json'),
             // KeyValue::make('Same As', 'sameAs')->rules('json'),
-            Date::make('Start Date', 'startDate'),
-            Date::make('End Date', 'endDate'),
-
+            Stack::make('Start/End', [
+                Date::make('Start Date', 'startDate'),
+                Date::make('End Date', 'endDate'),
+            ]),
         ];
     }
 

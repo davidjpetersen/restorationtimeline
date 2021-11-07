@@ -11,10 +11,12 @@ use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Textarea;
+use Nikans\TextLinked\TextLinked;
 // use Laravel\Nova\Fields\BelongsToMany;
 use Inspheric\Fields\Url;
-use Juul\Fields\BelongsToMany;  
+use Benjacho\BelongsToManyField\BelongsToManyField; 
 use Laravel\Nova\Http\Requests\NovaRequest;
+use App\Nova\Person; 
 
 class Source extends Resource
 {
@@ -58,41 +60,43 @@ class Source extends Resource
     {
         return [
             // ID::make('id')->sortable(),
-            Text::make('Title')->sortable(),
-            Text::make('Headline')->sortable(),
-            Text::make('Alternative Headline','alternativeHeadline')->sortable(),
-            Textarea::make('Abstract'),
-            Textarea::make('Description'),
-            // Textarea::make('Disambiguating Description'),
-            Textarea::make('Text'),
-
+            TextLinked::make('Title')->link($this)->sortable(),
+            BelongsToManyField::make('Creators', 'creators', Person::class)->optionsLabel('fullName'),
             Text::make('Publisher')->sortable(),
-            Text::make('Publication')->sortable(),
-            Text::make('Publisher Imprint', 'publisherImprint')->sortable(),
-            Number::make('Page Count', 'pageCount')->min(1)->sortable(),
-            DateTime::make('Date Published', 'datePublished')->sortable(),
-            Text::make('Copyright Notice', 'copyrightNotice')->sortable(),
-            Textarea::make('Citation')->sortable(),
             Number::make('Copyright Year', 'copyrightYear')->min(1)->max(2500)->sortable(),
 
-            Textarea::make('About')->sortable(),
-            Text::make('Caption')->sortable(),
-            Text::make('Embedded Text Caption', 'embeddedTextCaption')->sortable(),
+            Text::make('Headline')->hideFromIndex()->sortable(),
+            Text::make('Alternative Headline','alternativeHeadline')->hideFromIndex()->sortable(),
+            Textarea::make('Abstract')->hideFromIndex(),
+            Textarea::make('Description')->hideFromIndex(),
+            // Textarea::make('Disambiguating Description'),
+            Textarea::make('Text')->hideFromIndex(),
 
-            Number::make('Content Size', 'contentSize')->sortable(),
-            Number::make('Duration')->min(0)->sortable(),
-            DateTime::make('Start Time', 'startTime')->sortable(),
-            DateTime::make('End Time', 'endTime')->sortable(),
-            DateTime::make('Upload Date', 'uploadDate')->sortable(),
-            Number::make('Height')->min(1)->sortable(),
-            Number::make('Width')->min(1)->sortable(),
-            Country::make('Country of Origin', 'countryOfOrigin'),
-            Text::make('Credit Text', 'creditText')->sortable(),
-            Url::make('Content URL', 'contentUrl'),
-            Url::make('Archived At', 'archivedAt'),
-            // Url::make('Discussion Url', 'discussionUrl'),
-            // BelongsToMany::make('Creators', 'creators', 'App\Nova\Person'),
-            BelongsToMany::make('Creators', 'creators', \App\Nova\Person::class),
+            
+            Text::make('Publication')->hideFromIndex()->sortable(),
+            Text::make('Publisher Imprint', 'publisherImprint')->hideFromIndex()->sortable(),
+            Number::make('Page Count', 'pageCount')->min(1)->hideFromIndex()->sortable(),
+            DateTime::make('Date Published', 'datePublished')->hideFromIndex()->sortable(),
+            Text::make('Copyright Notice', 'copyrightNotice')->hideFromIndex()->sortable(),
+            Textarea::make('Citation')->hideFromIndex()->sortable(),
+
+            Textarea::make('About')->hideFromIndex()->sortable(),
+            Text::make('Caption')->hideFromIndex()->sortable(),
+            Text::make('Embedded Text Caption', 'embeddedTextCaption')->hideFromIndex()->sortable(),
+
+            Number::make('Content Size', 'contentSize')->hideFromIndex()->sortable(),
+            Number::make('Duration')->min(0)->hideFromIndex()->sortable(),
+            DateTime::make('Start Time', 'startTime')->hideFromIndex()->sortable(),
+            DateTime::make('End Time', 'endTime')->hideFromIndex()->sortable(),
+            DateTime::make('Upload Date', 'uploadDate')->hideFromIndex()->sortable(),
+            Number::make('Height')->hideFromIndex()->min(1)->sortable(),
+            Number::make('Width')->hideFromIndex()->min(1)->sortable(),
+            Country::make('Country of Origin', 'countryOfOrigin')->hideFromIndex(),
+            Text::make('Credit Text', 'creditText')->hideFromIndex()->sortable(),
+            Url::make('Content URL', 'contentUrl')->hideFromIndex(),
+            Url::make('Archived At', 'archivedAt')->hideFromIndex(),
+            // Url::make('Discussion Url', 'discussionUrl')->hideFromIndex(),
+            // BelongsToMany::make('Creators', 'creators', 'App\Nova\Person')->hideFromIndex(),
 
         ];
     }

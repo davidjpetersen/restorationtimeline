@@ -33,8 +33,8 @@ class CreateSourcesTable extends Migration
             $table->time('startTime')->nullable();
             $table->dateTime('uploadDate')->nullable();
             $table->bigInteger('width')->nullable();
-            $table->string('about')->nullable();
-            $table->string('abstract')->nullable();
+            $table->text('about')->nullable();
+            $table->text('abstract')->nullable();
             $table->string('accessMode')->nullable();
             $table->string('accessibilityAPI')->nullable();
             $table->string('accessibilityControl')->nullable();
@@ -61,12 +61,12 @@ class CreateSourcesTable extends Migration
             $table->string('publisher')->nullable();
             $table->bigInteger('pageCount')->nullable();
             $table->string('publisherImprint')->nullable();
-            $table->string('text')->nullable();
+            $table->text('text')->nullable();
             $table->string('thumbnailUrl')->nullable();
             $table->bigInteger('timeRequired')->nullable();
             $table->bigInteger('version')->nullable();
-            $table->string('description')->nullable();
-            $table->string('disambiguatingDescription')->nullable();
+            $table->text('description')->nullable();
+            $table->text('disambiguatingDescription')->nullable();
             $table->json('identifier')->nullable();
             $table->timestamps();
         });

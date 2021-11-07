@@ -15,8 +15,8 @@ class CreatePersonSourceTable extends Migration
     {
         Schema::create('person_source', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('person_id');
-            $table->bigInteger('source_id');
+            $table->bigInteger('person_id')->nullable();
+            $table->bigInteger('source_id')->nullable();
             $table->timestamps();
         });
     }
