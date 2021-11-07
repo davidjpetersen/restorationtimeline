@@ -80,6 +80,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     {
         return [
             new LaravelNovaCsvImport,
+            new \Spatie\BackupTool\BackupTool(),
         ];
     }
 

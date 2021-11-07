@@ -23,6 +23,7 @@
         "nikans/text-linked": "^1.0",
         "rinvex/laravel-categories": "^6.0",
         "simonhamp/laravel-nova-csv-import": "^0.2.0",
+        "spatie/nova-backup-tool": "^4.1",
         "tightenco/ziggy": "^1.0"
     },
     "require-dev": {
