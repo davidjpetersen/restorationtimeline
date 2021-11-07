@@ -4,12 +4,13 @@ namespace App\Nova;
 
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
-use Laravel\Nova\Fields\DateTime;
+use Laravel\Nova\Fields\Date;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\KeyValue;
 use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Textarea;
+use Nikans\TextLinked\TextLinked;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Person extends Resource
@@ -26,7 +27,7 @@ class Person extends Resource
      *
      * @var string
      */
-    public static $title = 'id';
+    public static $title = 'fullName';
 
     /**
      * The columns that should be searched.
@@ -34,8 +35,7 @@ class Person extends Resource
      * @var array
      */
     public static $search = [
-        'givenName',
-        'familyName',
+        'fullName',
     ];
 
     /**
@@ -47,20 +47,23 @@ class Person extends Resource
     public function fields(Request $request)
     {
         return [
-            ID::make('id')->sortable(),
-            Text::make('Honorific Prefix', 'honorificPrefix'),
-            Text::make('Given Name', 'givenName')->sortable(),
-            Text::make('Additional Name', 'additionalName'),
-            Text::make('Family Name', 'familyName')->sortable(),
-            Text::make('Maiden Name', 'maidenName'),
-            Text::make('Also Known As', 'alsoKnownAs'),
-            Text::make('Honorific Suffix', 'honorificSuffix'),
-            Text::make('Affiliation')->sortable(),
-            Text::make('Birth Place', 'birthPlace')->sortable(),
-            Text::make('Death Place', 'deathPlace')->sortable(),
-            Text::make('Email')->sortable(),
-            Text::make('Telephone')->sortable(),
-            Text::make('Fax Number', 'faxNumber')->sortable(),
+            // ID::make('Id'),
+            Text::make('Honorific Prefix', 'honorificPrefix')->hideFromIndex(),
+            TextLinked::make('Full Name')->link($this)->sortable()->exceptOnForms(),
+            Text::make('Given Name', 'givenName')->sortable()->hideFromIndex(),
+            Text::make('Additional Name', 'additionalName')->sortable()->hideFromIndex(),
+            Text::make('Family Name', 'familyName')->sortable()->hideFromIndex(),
+            Text::make('Maiden Name', 'maidenName')->sortable()->hideFromIndex(),
+            Text::make('Also Known As', 'alsoKnownAs')->sortable()->hideFromIndex(),
+            Text::make('Honorific Suffix', 'honorificSuffix')->sortable()->hideFromIndex(),
+            Text::make('Affiliation')->sortable()->hideFromIndex(),
+            Date::make('Birth Date', 'birthDate')->sortable(),
+            Date::make('Death Date', 'deathDate')->sortable(),
+            Text::make('Birth Place', 'birthPlace')->sortable()->hideFromIndex(),
+            Text::make('Death Place', 'deathPlace')->sortable()->hideFromIndex(),
+            Text::make('Email')->sortable()->hideFromIndex(),
+            Text::make('Telephone')->sortable()->hideFromIndex(),
+            Text::make('Fax Number', 'faxNumber')->sortable()->hideFromIndex(),
         ];
     }
 

@@ -3,8 +3,8 @@
 namespace App\Nova;
 
 use Illuminate\Http\Request;
-use Laravel\Nova\Fields\BelongsTo;
-use Laravel\Nova\Fields\DateTime;
+use Juul\Fields\BelongsToMany;
+use Laravel\Nova\Fields\Date;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\KeyValue;
 use Laravel\Nova\Fields\Select;
@@ -26,7 +26,7 @@ class Event extends Resource
      *
      * @var string
      */
-    public static $title = 'id';
+    public static $title = 'name';
 
     /**
      * The columns that should be searched.
@@ -34,7 +34,7 @@ class Event extends Resource
      * @var array
      */
     public static $search = [
-        'id',
+        'name',
     ];
 
     /**
@@ -46,15 +46,15 @@ class Event extends Resource
     public function fields(Request $request)
     {
         return [
-            ID::make('id')->sortable(),
-            Text::make('Event Name', 'name')->sortable(),
+            // ID::make('id')->sortable(),
+            Text::make('Event Name', 'name'),
             Select::make('Status', 'status')->options(['Auto-Draft', 'Draft', 'Review', 'Published', 'Retired']),
             Textarea::make('Description', 'description')->sortable(),
             // Textarea::make( 'Disambiguation Description')->sortable(),
             // KeyValue::make('Identifier', 'identifier')->rules('json'),
             // KeyValue::make('Same As', 'sameAs')->rules('json'),
-            DateTime::make('Start Date', 'startDate')->format('DD MMM YYYY'),
-            DateTime::make('End Date', 'endDate')->format('DD MMM YYYY'),
+            Date::make('Start Date', 'startDate'),
+            Date::make('End Date', 'endDate'),
 
         ];
     }

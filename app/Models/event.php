@@ -17,6 +17,8 @@ class Event extends Model
     protected $casts = [
         'identifer' => 'array',
         'sameAs' => 'array',
+        'startDate' => 'date',
+        'endDate' => 'date'
     ];
 
 }
