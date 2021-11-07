@@ -9,6 +9,8 @@ use Laravel\Nova\Fields\KeyValue;
 use Mauricewijnia\NovaMapsAddress\MapsAddress;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Textarea;
+use Laravel\Nova\Fields\Stack;
+use Laravel\Nova\Fields\Line;
 use Inspheric\Fields\Url;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
@@ -26,7 +28,7 @@ class Place extends Resource
      *
      * @var string
      */
-    public static $title = 'id';
+    public static $title = 'name';
 
     /**
      * The columns that should be searched.
@@ -34,7 +36,8 @@ class Place extends Resource
      * @var array
      */
     public static $search = [
-        'id',
+        'name',
+        'description',
     ];
 
     /**
@@ -46,21 +49,33 @@ class Place extends Resource
     public function fields(Request $request)
     {
         return [
-            ID::make('id')->sortable(),
+            // ID::make('id')->sortable(),
             Text::make('Name')->sortable(),
-            Boolean::make('Public Access', 'publicAccess'),
-            Boolean::make('Is Accessible For Free', 'isAccessibleForFree'),
-            Text::make('Alternative Name', 'alternativeName')->sortable(),
-            Textarea::make('Description'),
+            Boolean::make('Public Access', 'publicAccess')->hideFromIndex(),
+            Boolean::make('Is Accessible For Free', 'isAccessibleForFree')->hideFromIndex(),
+            Text::make('Alternative Name', 'alternativeName')->sortable()->hideFromIndex(),
+            Textarea::make('Description')->hideFromIndex(),
             // Textarea::make('Disambiguating Description'),
-            MapsAddress::make('address')
+            MapsAddress::make('Address', 'address')
                 ->zoom(4)
-                ->center(['lat' => 38.850033, 'lng' => -87.6500523]),
-            Text::make('Fax Number', 'faxNumber'),
-            Text::make('Telephone'),
-            Text::make('Slogan'),
-            Url::make('Url'),
-            Url::make('Tour Booking Page', 'tourBookingPage'),
+                ->center(['lat' => 38.850033, 'lng' => -87.6500523])->hideFromIndex(),
+            Stack::make('Address', [
+                Line::make('Address')->asHeading()->resolveUsing(function () {
+                    $address = $this->resource->address["formatted_address"];
+                    $firstComma = strpos($address, ",");
+                    return substr($this->resource->address["formatted_address"], 0, $firstComma);
+                }),
+                Line::make('Address')->resolveUsing(function () {
+                    $address = $this->resource->address["formatted_address"];
+                    $firstComma = strpos($address, ",")+2;
+                    return substr($this->resource->address["formatted_address"], $firstComma);
+                }),
+            ])->onlyOnIndex(),
+            Text::make('Fax Number', 'faxNumber')->hideFromIndex(),
+            Text::make('Telephone')->hideFromIndex(),
+            Text::make('Slogan')->hideFromIndex(),
+            Url::make('Url')->hideFromIndex(),
+            Url::make('Tour Booking Page', 'tourBookingPage')->hideFromIndex(),
             // KeyValue::make('Identifier')
             //     ->rules('json')
             //     ->keyLabel('Item') // Customize the key heading

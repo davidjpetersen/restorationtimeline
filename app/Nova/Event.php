@@ -49,7 +49,7 @@ class Event extends Resource
     {
         return [
             // ID::make('id')->sortable(),
-            Stack::make('Details', [
+            Stack::make('Event Title', [
                 Text::make('Event Name', 'name')->resolveUsing(function () {
                     return Str::limit($this->resource->name, 30);
                 }),

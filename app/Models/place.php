@@ -12,5 +12,6 @@ class Place extends Model
     protected $casts = [
         'identifier' => 'array',
         'sameAs' => 'array',
+        'address' => 'array',
     ];
 }
