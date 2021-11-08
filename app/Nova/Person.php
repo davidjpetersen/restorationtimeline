@@ -11,6 +11,7 @@ use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Textarea;
 use Nikans\TextLinked\TextLinked;
+use App\Nova\Metrics\PersonCount;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Person extends Resource
@@ -75,7 +76,9 @@ class Person extends Resource
      */
     public function cards(Request $request)
     {
-        return [];
+        return [
+            new PersonCount,
+        ];
     }
 
     /**

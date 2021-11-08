@@ -17,6 +17,7 @@ use Inspheric\Fields\Url;
 use Benjacho\BelongsToManyField\BelongsToManyField; 
 use Laravel\Nova\Http\Requests\NovaRequest;
 use App\Nova\Person; 
+use App\Nova\Metrics\SourceCount;
 
 class Source extends Resource
 {
@@ -64,37 +65,32 @@ class Source extends Resource
             BelongsToManyField::make('Creators', 'creators', Person::class)->optionsLabel('fullName'),
             Text::make('Publisher')->sortable(),
             Number::make('Copyright Year', 'copyrightYear')->min(1)->max(2500)->sortable(),
-
-            Text::make('Headline')->hideFromIndex()->sortable(),
-            Text::make('Alternative Headline','alternativeHeadline')->hideFromIndex()->sortable(),
             Textarea::make('Abstract')->hideFromIndex(),
             Textarea::make('Description')->hideFromIndex(),
-            // Textarea::make('Disambiguating Description'),
             Textarea::make('Text')->hideFromIndex(),
-
-            
             Text::make('Publication')->hideFromIndex()->sortable(),
             Text::make('Publisher Imprint', 'publisherImprint')->hideFromIndex()->sortable(),
             Number::make('Page Count', 'pageCount')->min(1)->hideFromIndex()->sortable(),
             DateTime::make('Date Published', 'datePublished')->hideFromIndex()->sortable(),
             Text::make('Copyright Notice', 'copyrightNotice')->hideFromIndex()->sortable(),
-            Textarea::make('Citation')->hideFromIndex()->sortable(),
-
-            Textarea::make('About')->hideFromIndex()->sortable(),
             Text::make('Caption')->hideFromIndex()->sortable(),
-            Text::make('Embedded Text Caption', 'embeddedTextCaption')->hideFromIndex()->sortable(),
-
-            Number::make('Content Size', 'contentSize')->hideFromIndex()->sortable(),
-            Number::make('Duration')->min(0)->hideFromIndex()->sortable(),
-            DateTime::make('Start Time', 'startTime')->hideFromIndex()->sortable(),
-            DateTime::make('End Time', 'endTime')->hideFromIndex()->sortable(),
-            DateTime::make('Upload Date', 'uploadDate')->hideFromIndex()->sortable(),
-            Number::make('Height')->hideFromIndex()->min(1)->sortable(),
-            Number::make('Width')->hideFromIndex()->min(1)->sortable(),
-            Country::make('Country of Origin', 'countryOfOrigin')->hideFromIndex(),
+            Textarea::make('Citation')->hideFromIndex()->sortable()->alwaysShow(),
             Text::make('Credit Text', 'creditText')->hideFromIndex()->sortable(),
             Url::make('Content URL', 'contentUrl')->hideFromIndex(),
             Url::make('Archived At', 'archivedAt')->hideFromIndex(),
+            // Text::make('Headline')->hideFromIndex()->sortable(),
+            // Text::make('Alternative Headline','alternativeHeadline')->hideFromIndex()->sortable(),
+            // Textarea::make('Disambiguating Description'),
+            // Textarea::make('About')->hideFromIndex()->sortable(),
+            // Text::make('Embedded Text Caption', 'embeddedTextCaption')->hideFromIndex()->sortable(),
+            // Number::make('Content Size', 'contentSize')->hideFromIndex()->sortable(),
+            // Number::make('Duration')->min(0)->hideFromIndex()->sortable(),
+            // DateTime::make('Start Time', 'startTime')->hideFromIndex()->sortable(),
+            // DateTime::make('End Time', 'endTime')->hideFromIndex()->sortable(),
+            // DateTime::make('Upload Date', 'uploadDate')->hideFromIndex()->sortable(),
+            // Number::make('Height')->hideFromIndex()->min(1)->sortable(),
+            // Number::make('Width')->hideFromIndex()->min(1)->sortable(),
+            // Country::make('Country of Origin', 'countryOfOrigin')->hideFromIndex(),
             // Url::make('Discussion Url', 'discussionUrl')->hideFromIndex(),
             // BelongsToMany::make('Creators', 'creators', 'App\Nova\Person')->hideFromIndex(),
 
@@ -109,7 +105,9 @@ class Source extends Resource
      */
     public function cards(Request $request)
     {
-        return [];
+        return [
+            new SourceCount
+        ];
     }
 
     /**

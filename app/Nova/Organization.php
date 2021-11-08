@@ -4,6 +4,7 @@ namespace App\Nova;
 
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\ID;
+use App\Nova\Metrics\OrganizationCount;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Organization extends Resource
@@ -52,7 +53,9 @@ class Organization extends Resource
      */
     public function cards(Request $request)
     {
-        return [];
+        return [
+            new OrganizationCount,
+        ];
     }
 
     /**

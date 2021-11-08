@@ -12,6 +12,7 @@ use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Textarea;
 use Laravel\Nova\Fields\Stack;
+use App\Nova\Metrics\EventCount;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Event extends Resource
@@ -75,7 +76,9 @@ class Event extends Resource
      */
     public function cards(Request $request)
     {
-        return [];
+        return [
+            new EventCount,
+        ];
     }
 
     /**

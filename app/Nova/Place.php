@@ -12,6 +12,7 @@ use Laravel\Nova\Fields\Textarea;
 use Laravel\Nova\Fields\Stack;
 use Laravel\Nova\Fields\Line;
 use Inspheric\Fields\Url;
+use App\Nova\Metrics\PlaceCount;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Place extends Resource
@@ -97,7 +98,9 @@ class Place extends Resource
      */
     public function cards(Request $request)
     {
-        return [];
+        return [
+            new PlaceCount,
+        ];
     }
 
     /**
