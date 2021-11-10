@@ -11,6 +11,7 @@ use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Textarea;
+use Laravel\Nova\Fields\BelongsToMany;
 use Nikans\TextLinked\TextLinked;
 // use Laravel\Nova\Fields\BelongsToMany;
 use Inspheric\Fields\Url;
@@ -60,7 +61,6 @@ class Source extends Resource
     public function fields(Request $request)
     {
         return [
-            // ID::make('id')->sortable(),
             TextLinked::make('Title')->link($this)->sortable(),
             BelongsToManyField::make('Creators', 'creators', Person::class),
             Text::make('Publisher')->sortable(),
@@ -78,6 +78,7 @@ class Source extends Resource
             Text::make('Credit Text', 'creditText')->hideFromIndex()->sortable(),
             Url::make('Content URL', 'contentUrl')->hideFromIndex(),
             Url::make('Archived At', 'archivedAt')->hideFromIndex(),
+            BelongsToMany::make('Events', 'events', 'App\Nova\Event')->hideFromIndex(),
             // Text::make('Headline')->hideFromIndex()->sortable(),
             // Text::make('Alternative Headline','alternativeHeadline')->hideFromIndex()->sortable(),
             // Textarea::make('Disambiguating Description'),
@@ -93,7 +94,6 @@ class Source extends Resource
             // Country::make('Country of Origin', 'countryOfOrigin')->hideFromIndex(),
             // Url::make('Discussion Url', 'discussionUrl')->hideFromIndex(),
             // BelongsToMany::make('Creators', 'creators', 'App\Nova\Person')->hideFromIndex(),
-
         ];
     }
 

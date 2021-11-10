@@ -13,6 +13,7 @@ use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Textarea;
 use Laravel\Nova\Fields\Stack;
 use App\Nova\Metrics\EventCount;
+use Benjacho\BelongsToManyField\BelongsToManyField; 
 use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Event extends Resource
@@ -49,13 +50,11 @@ class Event extends Resource
     public function fields(Request $request)
     {
         return [
-            // ID::make('id')->sortable(),
             Stack::make('Event Title', [
                 Text::make('Event Name', 'name')->resolveUsing(function () {
                     return Str::limit($this->resource->name, 30);
                 }),
             ]),
-            
             Select::make('Status', 'status')->options(['Auto-Draft', 'Draft', 'Review', 'Published', 'Retired']),
             Textarea::make('Description', 'description')->sortable(),
             // Textarea::make( 'Disambiguation Description')->sortable(),
@@ -65,6 +64,9 @@ class Event extends Resource
                 Date::make('Start Date', 'startDate'),
                 Date::make('End Date', 'endDate'),
             ]),
+
+            BelongsToMany::make('Sources', 'sources', 'App\Nova\Source')->hideFromIndex(),
+            BelongsToMany::make('People', 'people', 'App\Nova\Person')->hideFromIndex(),
         ];
     }
 

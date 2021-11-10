@@ -15,8 +15,8 @@ class CreatePersonSourceTable extends Migration
     {
         Schema::create('person_source', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('person_id');
-            $table->foreignId('source_id');
+            $table->foreignId('personID');
+            $table->foreignId('sourceID');
             $table->timestamps();
         });
     }

@@ -50,7 +50,6 @@ class Place extends Resource
     public function fields(Request $request)
     {
         return [
-            // ID::make('id')->sortable(),
             Text::make('Name')->sortable(),
             Boolean::make('Public Access', 'publicAccess')->hideFromIndex(),
             Boolean::make('Is Accessible For Free', 'isAccessibleForFree')->hideFromIndex(),

@@ -4,6 +4,11 @@ namespace App\Nova;
 
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\ID;
+use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Fields\Textarea;
+use Laravel\Nova\Fields\DateTime;
+use Nikans\TextLinked\TextLinked;
+use Mauricewijnia\NovaMapsAddress\MapsAddress;
 use App\Nova\Metrics\OrganizationCount;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
@@ -21,7 +26,7 @@ class Organization extends Resource
      *
      * @var string
      */
-    public static $title = 'id';
+    public static $title = 'name';
 
     /**
      * The columns that should be searched.
@@ -29,7 +34,7 @@ class Organization extends Resource
      * @var array
      */
     public static $search = [
-        'id',
+        'name',
     ];
 
     /**
@@ -41,7 +46,44 @@ class Organization extends Resource
     public function fields(Request $request)
     {
         return [
-            ID::make(__('ID'), 'id')->sortable(),
+            TextLinked::make('Name')
+                ->link($this)
+                ->sortable(),
+            Text::make('Alternative Name', 'alternativeName'),
+            Textarea::make('Description')
+                ->hideFromIndex(),
+            Textarea::make('Disambiguating Description', 'disambiguatingDescription')
+                ->hideFromIndex(),
+            Textarea::make('Text')->hideFromIndex(),
+            MapsAddress::make('Address', 'address')
+                ->zoom(4)
+                ->center(['lat' => 38.850033, 'lng' => -87.6500523])
+                ->hideFromIndex(),
+            DateTime::make('Founding Date', 'foundingDate')
+                ->hideFromIndex()
+                ->sortable(),
+            MapsAddress::make('Founding Location', 'foundingLocation')
+                ->zoom(4)
+                ->center(['lat' => 38.850033, 'lng' => -87.6500523])
+                ->hideFromIndex()
+                ->mapOptions(['mapId' => 'foundingLocation']),
+            DateTime::make('Dissolution Date', 'dissolutionDate')
+                ->hideFromIndex()
+                ->sortable(),
+            MapsAddress::make('Dissolution Location', 'dissolutionLocation')
+                ->zoom(4)
+                ->center(['lat' => 38.850033, 'lng' => -87.6500523])
+                ->hideFromIndex()
+                ->mapOptions(['mapId' => 'dissolutionLocation']),
+            Text::make('Fax Number', 'faxNumber')
+                ->hideFromIndex()
+                ->sortable(),
+            Text::make('Email', 'email')
+                ->hideFromIndex()
+                ->sortable(),
+            Text::make('Telephone', 'telephone')
+                ->hideFromIndex()
+                ->sortable(),
         ];
     }
 

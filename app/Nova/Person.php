@@ -48,7 +48,6 @@ class Person extends Resource
     public function fields(Request $request)
     {
         return [
-            // ID::make('Id'),
             Text::make('Honorific Prefix', 'honorificPrefix')->hideFromIndex(),
             TextLinked::make('Full Name')->link($this)->sortable()->exceptOnForms(),
             Text::make('Given Name', 'givenName')->sortable()->hideFromIndex(),
