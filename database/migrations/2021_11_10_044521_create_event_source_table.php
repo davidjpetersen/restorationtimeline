@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePersonSourceTable extends Migration
+class CreateEventSourceTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,15 @@ class CreatePersonSourceTable extends Migration
      */
     public function up()
     {
-        Schema::create('person_source', function (Blueprint $table) {
+        Schema::create('event_source', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('person_id');
-            $table->foreignId('source_id');
+            $table->foreignId('eventID');
+            $table->foreignId('sourceID');
+            $table->string('pageNumber');
+            $table->text('notes');
             $table->timestamps();
         });
+
     }
 
     /**
@@ -28,6 +31,6 @@ class CreatePersonSourceTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('person_source');
+        Schema::dropIfExists('event_source');
     }
 }

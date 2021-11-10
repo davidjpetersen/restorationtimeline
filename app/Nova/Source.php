@@ -62,7 +62,7 @@ class Source extends Resource
         return [
             // ID::make('id')->sortable(),
             TextLinked::make('Title')->link($this)->sortable(),
-            BelongsToManyField::make('Creators', 'creators', Person::class)->optionsLabel('fullName'),
+            BelongsToManyField::make('Creators', 'creators', Person::class),
             Text::make('Publisher')->sortable(),
             Number::make('Copyright Year', 'copyrightYear')->min(1)->max(2500)->sortable(),
             Textarea::make('Abstract')->hideFromIndex(),
