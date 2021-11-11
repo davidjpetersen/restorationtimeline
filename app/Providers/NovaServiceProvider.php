@@ -58,6 +58,12 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     {
         return [
             new Help,
+            new \App\Nova\Metrics\EventCount,
+            new \App\Nova\Metrics\OrganizationCount,
+            new \App\Nova\Metrics\PersonCount,
+            new \App\Nova\Metrics\PlaceCount,
+            new \App\Nova\Metrics\SourceCount,
+            new \App\Nova\Metrics\UserCount,
         ];
     }
 

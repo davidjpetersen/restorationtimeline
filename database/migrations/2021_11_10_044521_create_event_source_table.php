@@ -17,8 +17,8 @@ class CreateEventSourceTable extends Migration
             $table->id();
             $table->foreignId('eventID');
             $table->foreignId('sourceID');
-            $table->string('pageNumber');
-            $table->text('notes');
+            $table->string('pageNumber')->nullable();
+            $table->text('notes')->nullable();
             $table->timestamps();
         });
 

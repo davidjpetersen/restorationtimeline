@@ -17,7 +17,7 @@ class CreateEventPersonTable extends Migration
             $table->id();
             $table->foreignId('eventID');
             $table->foreignId('personID');
-            $table->text('notes');
+            $table->text('notes')->nullable();;
             $table->timestamps();
         });
     }
