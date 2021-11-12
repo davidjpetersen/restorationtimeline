@@ -5,6 +5,7 @@ namespace App\Nova;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Country;
 use Laravel\Nova\Fields\DateTime;
+use Laravel\Nova\Fields\File;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\KeyValue;
 use Laravel\Nova\Fields\Number;
@@ -94,6 +95,7 @@ class Source extends Resource
             // Country::make('Country of Origin', 'countryOfOrigin')->hideFromIndex(),
             // Url::make('Discussion Url', 'discussionUrl')->hideFromIndex(),
             // BelongsToMany::make('Creators', 'creators', 'App\Nova\Person')->hideFromIndex(),
+            File::make('Upload', 'uploadFile'),
         ];
     }
 

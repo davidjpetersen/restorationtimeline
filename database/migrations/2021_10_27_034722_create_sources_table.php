@@ -69,6 +69,7 @@ class CreateSourcesTable extends Migration
             $table->text('disambiguatingDescription')->nullable();
             $table->json('identifier')->nullable();
             $table->enum('status', ['Auto-Draft', 'Draft', 'Review', 'Published', 'Retired'])->nullable();
+            $table->text('uploadFile')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

@@ -9,6 +9,7 @@ use Laravel\Nova\Fields\Date;
 use Laravel\Nova\Fields\Markdown;
 use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Fields\Textarea;
 use Laravel\Nova\Fields\Stack;
 use App\Nova\Metrics\EventCount;
 use Laravel\Nova\Http\Requests\NovaRequest;
@@ -47,17 +48,22 @@ class Event extends Resource
     public function fields(Request $request)
     {
         return [
-            Stack::make('Event Title', [
-                Text::make('Event Name', 'name')->resolveUsing(function () {
-                    return Str::limit($this->resource->name, 30);
-                }),
-            ]),
+
+            Textarea::make('Event Name', 'name')->alwaysShow(),
+            
+            // ->resolveUsing(function () {
+            //     return Str::limit($this->resource->name, 30);
+            // }),
+
             Select::make('Status', 'status')->options(['Auto-Draft', 'Draft', 'Review', 'Published', 'Retired']),
             Markdown::make('Description', 'description')->sortable(),
             Stack::make('Start/End', [
                 Date::make('Start Date', 'startDate'),
                 Date::make('End Date', 'endDate'),
             ]),
+
+            Date::make('Start Date', 'startDate')->onlyOnForms(),
+            Date::make('End Date', 'endDate')->onlyOnForms(),
 
             BelongsToMany::make('Sources', 'sources', 'App\Nova\Source')
             ->fields(function() {
