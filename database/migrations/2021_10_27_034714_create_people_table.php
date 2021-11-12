@@ -37,7 +37,9 @@ class CreatePeopleTable extends Migration
             $table->integer('weight')->nullable();
             $table->json('identifier')->nullable();
             $table->json('sameAs')->nullable();
+            $table->enum('status', ['Auto-Draft', 'Draft', 'Review', 'Published', 'Retired'])->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

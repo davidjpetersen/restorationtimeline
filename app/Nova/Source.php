@@ -140,6 +140,8 @@ class Source extends Resource
      */
     public function actions(Request $request)
     {
-        return [];
+        return [
+            (new Actions\UpdateStatus)->confirmButtonText('Update Status'),
+        ];
     }
 }

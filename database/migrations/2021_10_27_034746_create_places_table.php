@@ -36,7 +36,9 @@ class CreatePlacesTable extends Migration
             $table->string('url')->nullable();
             $table->text('identifier')->nullable();
             $table->text('sameAs')->nullable();
+            $table->enum('status', ['Auto-Draft', 'Draft', 'Review', 'Published', 'Retired'])->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

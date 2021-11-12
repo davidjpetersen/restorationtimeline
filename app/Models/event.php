@@ -36,7 +36,7 @@ class Event extends Model
      */
     public function sources()
     {
-        return $this->belongsToMany(Source::class, 'event_source', 'eventID', 'sourceID');
+        return $this->belongsToMany(Source::class, 'event_source', 'eventID', 'sourceID')->withPivot(['pageNumber']);
     }
 
 }

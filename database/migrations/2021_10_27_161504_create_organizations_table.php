@@ -29,7 +29,9 @@ class CreateOrganizationsTable extends Migration
             $table->string('telephone')->nullable();
             $table->json('identifier')->nullable();
             $table->json('sameAs')->nullable();
+            $table->enum('status', ['Auto-Draft', 'Draft', 'Review', 'Published', 'Retired'])->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

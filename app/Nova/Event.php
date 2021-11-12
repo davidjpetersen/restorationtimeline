@@ -59,8 +59,17 @@ class Event extends Resource
                 Date::make('End Date', 'endDate'),
             ]),
 
-            BelongsToMany::make('Sources', 'sources', 'App\Nova\Source')->hideFromIndex(),
-            BelongsToMany::make('People', 'people', 'App\Nova\Person')->hideFromIndex(),
+            BelongsToMany::make('Sources', 'sources', 'App\Nova\Source')
+            ->fields(function() {
+                return [
+                    Text::make('Page Number', 'pageNumber')->rules('required'),   
+                ];
+            })
+            ->fillUsing(function($pivots) {
+                return $pivots;
+            }) 
+            ->pivots(),
+            BelongsToMany::make('People', 'people', 'App\Nova\Person'),
         ];
     }
 
@@ -108,8 +117,7 @@ class Event extends Resource
     public function actions(Request $request)
     {
         return [
-            (new Actions\UpdateStatus)
-                ->confirmButtonText('Update Status'),
+            (new Actions\UpdateStatus)->confirmButtonText('Update Status'),
         ];
     }
 }
