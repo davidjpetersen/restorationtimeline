@@ -7,7 +7,9 @@
         "watch-poll": "mix watch -- --watch-options-poll=1000",
         "hot": "mix watch --hot",
         "prod": "npm run production",
-        "production": "mix --production"
+        "production": "mix --production",
+        "build-google-book-search": "cd nova-components/GoogleBookSearch && npm run dev",
+        "build-google-book-search-prod": "cd nova-components/GoogleBookSearch && npm run prod"
     },
     "devDependencies": {
         "@headlessui/vue": "^1.4.1",

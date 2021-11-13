@@ -2,17 +2,20 @@
     "name": "laravel/laravel",
     "type": "project",
     "description": "The Laravel Framework.",
-    "keywords": ["framework", "laravel"],
+    "keywords": [
+        "framework",
+        "laravel"
+    ],
     "license": "MIT",
     "require": {
         "php": "^7.3|^8.0",
         "benjacho/belongs-to-many-field": "^2.0",
+        "coroowicaksono/chart-js-integration": "^0.3.5",
         "ebess/advanced-nova-media-library": "^3.6",
         "fruitcake/laravel-cors": "^2.0",
         "genealabs/nova-map-marker-field": "^0.3.1",
         "guzzlehttp/guzzle": "^7.0.1",
         "inertiajs/inertia-laravel": "^0.4.3",
-        "inspheric/nova-url-field": "^1.4",
         "laravel/framework": "^8.65",
         "laravel/jetstream": "^2.4",
         "laravel/nova": "*",
@@ -22,10 +25,10 @@
         "martinjuul/many-to-many": "^1.0",
         "mauricewijnia/nova-maps-address": "^1.3",
         "nikans/text-linked": "^1.0",
-        "rinvex/laravel-categories": "^6.0",
         "simonhamp/laravel-nova-csv-import": "^0.2.0",
         "spatie/nova-backup-tool": "^4.1",
-        "tightenco/ziggy": "^1.0"
+        "tightenco/ziggy": "^1.0",
+        "restoration/google-book-search": "*"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.6",
@@ -80,6 +83,10 @@
         "nova": {
             "type": "path",
             "url": "./nova"
+        },
+        "0": {
+            "type": "path",
+            "url": "./nova-components/GoogleBookSearch"
         }
     }
 }

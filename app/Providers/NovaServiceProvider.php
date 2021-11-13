@@ -56,6 +56,12 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
      */
     protected function cards()
     {
+
+        $years = [];
+        for ($i = 1800; $i < 1901; $i = $i + 5) {
+            $years[] = strval($i);
+        }
+
         return [
             new \App\Nova\Metrics\EventCount,
             new \App\Nova\Metrics\OrganizationCount,

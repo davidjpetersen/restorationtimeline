@@ -2,7 +2,14 @@
 
 namespace App\Nova;
 
+use App\Nova\Event;
+use App\Nova\Person; 
+use App\Nova\Metrics\SourceCount;
 use Illuminate\Http\Request;
+use Laravel\Nova\Http\Requests\NovaRequest;
+
+use Laravel\Nova\Fields\BelongsToMany;
+use Benjacho\BelongsToManyField\BelongsToManyField; 
 use Laravel\Nova\Fields\Country;
 use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\File;
@@ -12,14 +19,7 @@ use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Textarea;
-use Laravel\Nova\Fields\BelongsToMany;
 use Nikans\TextLinked\TextLinked;
-// use Laravel\Nova\Fields\BelongsToMany;
-use Inspheric\Fields\Url;
-use Benjacho\BelongsToManyField\BelongsToManyField; 
-use Laravel\Nova\Http\Requests\NovaRequest;
-use App\Nova\Person; 
-use App\Nova\Metrics\SourceCount;
 
 class Source extends Resource
 {
@@ -77,24 +77,9 @@ class Source extends Resource
             Text::make('Caption')->hideFromIndex()->sortable(),
             Textarea::make('Citation')->hideFromIndex()->sortable()->alwaysShow(),
             Text::make('Credit Text', 'creditText')->hideFromIndex()->sortable(),
-            Url::make('Content URL', 'contentUrl')->hideFromIndex(),
-            Url::make('Archived At', 'archivedAt')->hideFromIndex(),
-            BelongsToMany::make('Events', 'events', 'App\Nova\Event')->hideFromIndex(),
-            // Text::make('Headline')->hideFromIndex()->sortable(),
-            // Text::make('Alternative Headline','alternativeHeadline')->hideFromIndex()->sortable(),
-            // Textarea::make('Disambiguating Description'),
-            // Textarea::make('About')->hideFromIndex()->sortable(),
-            // Text::make('Embedded Text Caption', 'embeddedTextCaption')->hideFromIndex()->sortable(),
-            // Number::make('Content Size', 'contentSize')->hideFromIndex()->sortable(),
-            // Number::make('Duration')->min(0)->hideFromIndex()->sortable(),
-            // DateTime::make('Start Time', 'startTime')->hideFromIndex()->sortable(),
-            // DateTime::make('End Time', 'endTime')->hideFromIndex()->sortable(),
-            // DateTime::make('Upload Date', 'uploadDate')->hideFromIndex()->sortable(),
-            // Number::make('Height')->hideFromIndex()->min(1)->sortable(),
-            // Number::make('Width')->hideFromIndex()->min(1)->sortable(),
-            // Country::make('Country of Origin', 'countryOfOrigin')->hideFromIndex(),
-            // Url::make('Discussion Url', 'discussionUrl')->hideFromIndex(),
-            // BelongsToMany::make('Creators', 'creators', 'App\Nova\Person')->hideFromIndex(),
+            Text::make('Content URL', 'contentUrl')->withMeta(['extraAttributes' => ['type' => 'url']]),
+            Text::make('Archived At', 'archivedAt')->withMeta(['extraAttributes' => ['type' => 'url']]),
+            BelongsToMany::make('Events', 'events', Event::class)->hideFromIndex(),
             File::make('Upload', 'uploadFile'),
         ];
     }
