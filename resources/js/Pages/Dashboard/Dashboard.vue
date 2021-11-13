@@ -2,10 +2,17 @@
     <app-layout title="Dashboard">
         <div class="bg-white">
             <hero />
-            <carousel title="Historical Periods" :items="products"/>
-            <carousel title="Joseph Smith's Early Life" :items="products"/>
-            <carousel title="Treasure Digging" :items="products"/>
-            <carousel title="Book of Mormon" :items="products"/>
+            <carousel title="Historical Periods" :items="items"/>
+            <carousel title="Joseph Smith's Early Life" :items="items"/>
+            <carousel title="Treasure Digging" :items="items"/>
+            <carousel title="Book of Mormon Translation" :items="items"/>
+            <carousel title="Doctrine and Covenants" :items="items"/>
+            <carousel title="Mormon Military Action" :items="items"/>
+            <carousel title="Joseph Smith's Polygamy" :items="items"/>
+            <carousel title="Wives of Joseph Smith" :items="items"/>
+            <carousel title="The Succession Crisis" :items="items"/>
+            <carousel title="Unpublished Revelations" :items="items"/>
+            <carousel title="Early Mormon Hitmen" :items="items"/>
         </div>
     </app-layout>
 </template>
@@ -13,16 +20,16 @@
 <script>
 import { defineComponent } from "vue";
 import AppLayout from "@/Layouts/AppLayout.vue";
-import Hero from "./Dashboard/Hero.vue";
-import Carousel from "./Dashboard/Carousel.vue";
-import usa from '../../images/usa.png';
-import early from '../../images/early.png';
-import newyork from '../../images/newyork.png';
-import ohio from '../../images/ohio.png';
-import missouri from '../../images/missouri.png';
-import illinois from '../../images/illinois.png';
-import exedous from '../../images/exedous.png';
-import utah from '../../images/utah.png';
+import Hero from "./Hero.vue";
+import Carousel from "./Carousel.vue";
+import usa from '../../../images/usa.png';
+import early from '../../../images/early.png';
+import newyork from '../../../images/newyork.png';
+import ohio from '../../../images/ohio.png';
+import missouri from '../../../images/missouri.png';
+import illinois from '../../../images/illinois.png';
+import exedous from '../../../images/exedous.png';
+import utah from '../../../images/utah.png';
 
 export default defineComponent({
     name: 'Dashboard',
@@ -33,7 +40,7 @@ export default defineComponent({
     },
     data() {
         return {
-            products: [
+            items: [
                 {
                     id: "1000",
                     name: "US History",

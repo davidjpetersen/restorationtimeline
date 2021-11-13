@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Place;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class PlaceController extends Controller
 {
@@ -14,7 +15,7 @@ class PlaceController extends Controller
      */
     public function index()
     {
-        //
+        return Inertia::render('Places/Places');
     }
 
     /**
@@ -46,7 +47,7 @@ class PlaceController extends Controller
      */
     public function show(place $place)
     {
-        //
+        return Inertia::render('Places/Place');
     }
 
     /**

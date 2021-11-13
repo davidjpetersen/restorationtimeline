@@ -79,7 +79,7 @@ class Source extends Resource
             Text::make('Credit Text', 'creditText')->hideFromIndex()->sortable(),
             Text::make('Content URL', 'contentUrl')->withMeta(['extraAttributes' => ['type' => 'url']]),
             Text::make('Archived At', 'archivedAt')->withMeta(['extraAttributes' => ['type' => 'url']]),
-            BelongsToMany::make('Events', 'events', Event::class)->hideFromIndex(),
+            BelongsToManyField::make('Events', 'events', Event::class)->hideFromIndex(),
             File::make('Upload', 'uploadFile'),
         ];
     }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Source;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class SourceController extends Controller
 {
@@ -14,7 +15,7 @@ class SourceController extends Controller
      */
     public function index()
     {
-        //
+        return Inertia::render('Sources/Sources');
     }
 
     /**
@@ -46,7 +47,7 @@ class SourceController extends Controller
      */
     public function show(source $source)
     {
-        //
+        return Inertia::render('Sources/Source');
     }
 
     /**

@@ -1,10 +1,10 @@
 <template>
-    <app-layout title="People">
-     <div class="py-12">
+    <app-layout title="Place">
+        <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
 
-                </div>
+                    Place
+
             </div>
         </div>
     </app-layout>
@@ -15,6 +15,7 @@
     import AppLayout from '@/Layouts/AppLayout.vue'
 
     export default defineComponent({
+        name: 'Place',
         components: {
             AppLayout,
         },

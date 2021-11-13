@@ -5,19 +5,20 @@
         :numScroll="5"
         :responsiveOptions="responsiveOptions"
         :indicatorsContentClass="hidden"
-        class="py-5"
+        class="pb-3"
     >
         <template #header>
             <h1 class="font-extrabold text-lg uppercase ml-12">{{ title }}</h1>
         </template>
         <template #item="slotProps">
-            <div>
+
+            <Link :href="route('event', { eventId: slotProps.data.id })">
                 <img
                     :src="slotProps.data.image"
                     :alt="slotProps.data.name"
                     class="product-image"
                 />
-            </div>
+            </Link>
         </template>
     </Carousel>
 </template>
@@ -26,9 +27,10 @@
 import Button from "primevue/button";
 import Carousel from "primevue/carousel";
 import Skeleton from "primevue/skeleton";
+import { Link } from "@inertiajs/inertia-vue3";
 
 export default {
-    components: { Button, Carousel, Skeleton },
+    components: { Button, Carousel, Link, Skeleton },
     props: ['title', 'items'],
     data() {
         return {
