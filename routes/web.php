@@ -35,7 +35,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/events', [EventController::class, 'index'])->name('events');
-    Route::get('/event/{eventId}', [EventController::class, 'show'])->name('event');
+    Route::get('/events/{eventId}', [EventController::class, 'show'])->name('event');
 
     Route::get('/people', [PersonController::class, 'show'])->name('people');
     Route::get('/people/{personId}', [PersonController::class, 'show'])->name('person');
