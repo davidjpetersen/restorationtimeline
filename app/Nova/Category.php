@@ -3,25 +3,18 @@
 namespace App\Nova;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
-use Juul\Fields\BelongsToMany;
-use Laravel\Nova\Fields\Date;
-use Laravel\Nova\Fields\Markdown;
-use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Textarea;
-use Laravel\Nova\Fields\Stack;
-use App\Nova\Metrics\EventCount;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
-class Event extends Resource
+class Category extends Resource
 {
     /**
      * The model the resource corresponds to.
      *
      * @var string
      */
-    public static $model = \App\Models\Event::class;
+    public static $model = \App\Models\Category::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.
@@ -37,6 +30,7 @@ class Event extends Resource
      */
     public static $search = [
         'name',
+        'description',
     ];
 
     /**
@@ -48,33 +42,8 @@ class Event extends Resource
     public function fields(Request $request)
     {
         return [
-            Select::make('Status', 'status')->options(['Auto-Draft', 'Draft', 'Review', 'Published', 'Retired']),
-            Textarea::make('Event Name', 'name')->alwaysShow(),
-            
-            // ->resolveUsing(function () {
-            //     return Str::limit($this->resource->name, 30);
-            // }),
-
-            Markdown::make('Description', 'description')->sortable(),
-            Stack::make('Start/End', [
-                Date::make('Start Date', 'startDate'),
-                Date::make('End Date', 'endDate'),
-            ]),
-
-            Date::make('Start Date', 'startDate')->onlyOnForms(),
-            Date::make('End Date', 'endDate')->onlyOnForms(),
-
-            BelongsToMany::make('Sources', 'sources', 'App\Nova\Source')
-            ->fields(function() {
-                return [
-                    Text::make('Page Number', 'pageNumber'),   
-                ];
-            })
-            ->fillUsing(function($pivots) {
-                return $pivots;
-            }) 
-            ->pivots(),
-            BelongsToMany::make('People', 'people', 'App\Nova\Person'),
+            Text::make(__('Name'), 'name')->sortable(),
+            Textarea::make(__('Description'), 'description')->sortable(),
         ];
     }
 
@@ -86,9 +55,7 @@ class Event extends Resource
      */
     public function cards(Request $request)
     {
-        return [
-            new EventCount,
-        ];
+        return [];
     }
 
     /**
@@ -121,8 +88,6 @@ class Event extends Resource
      */
     public function actions(Request $request)
     {
-        return [
-            (new Actions\UpdateStatus)->confirmButtonText('Update Status'),
-        ];
+        return [];
     }
 }

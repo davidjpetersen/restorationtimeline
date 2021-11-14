@@ -18,7 +18,7 @@ class Person extends Model
      */
     public function getFullNameAttribute()
     {
-        return "{$this->givenName} {$this->familyName}";
+        return "{$this->givenName} {$this->additionalName} {$this->familyName} {$this->honorificSuffix}";
     }
 
     /**

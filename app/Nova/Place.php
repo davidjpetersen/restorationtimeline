@@ -11,7 +11,6 @@ use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Textarea;
 use Laravel\Nova\Fields\Stack;
 use Laravel\Nova\Fields\Line;
-use Inspheric\Fields\Url;
 use App\Nova\Metrics\PlaceCount;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
@@ -50,6 +49,7 @@ class Place extends Resource
     public function fields(Request $request)
     {
         return [
+            Select::make('Status', 'status')->options(['Auto-Draft', 'Draft', 'Review', 'Published', 'Retired']),
             Text::make('Name')->sortable(),
             Boolean::make('Public Access', 'publicAccess')->hideFromIndex(),
             Boolean::make('Is Accessible For Free', 'isAccessibleForFree')->hideFromIndex(),
@@ -74,8 +74,8 @@ class Place extends Resource
             Text::make('Fax Number', 'faxNumber')->hideFromIndex(),
             Text::make('Telephone')->hideFromIndex(),
             Text::make('Slogan')->hideFromIndex(),
-            Url::make('Url')->hideFromIndex(),
-            Url::make('Tour Booking Page', 'tourBookingPage')->hideFromIndex(),
+            Text::make('Url')->withMeta(['extraAttributes' => ['type' => 'url']])->hideFromIndex(),
+            Text::make('Tour Booking Page', 'tourBookingPage')->withMeta(['extraAttributes' => ['type' => 'url']])->hideFromIndex(),
             // KeyValue::make('Identifier')
             //     ->rules('json')
             //     ->keyLabel('Item') // Customize the key heading

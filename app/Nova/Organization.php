@@ -46,6 +46,7 @@ class Organization extends Resource
     public function fields(Request $request)
     {
         return [
+            Select::make('Status', 'status')->options(['Auto-Draft', 'Draft', 'Review', 'Published', 'Retired']),
             TextLinked::make('Name')
                 ->link($this)
                 ->sortable(),

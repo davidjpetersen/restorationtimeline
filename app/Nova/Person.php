@@ -36,7 +36,8 @@ class Person extends Resource
      * @var array
      */
     public static $search = [
-        'fullName',
+        'givenName',
+        'familyName',
     ];
 
     /**
@@ -48,6 +49,7 @@ class Person extends Resource
     public function fields(Request $request)
     {
         return [
+            Select::make('Status', 'status')->options(['Auto-Draft', 'Draft', 'Review', 'Published', 'Retired']),
             Text::make('Honorific Prefix', 'honorificPrefix')->hideFromIndex(),
             TextLinked::make('Full Name')->link($this)->sortable()->exceptOnForms(),
             Text::make('Given Name', 'givenName')->sortable()->hideFromIndex(),
@@ -111,6 +113,8 @@ class Person extends Resource
     public function actions(Request $request)
     {
         return [
+            (new Actions\EnhancePerson)->confirmButtonText('Enhance Person'),
+            (new Actions\MergeItems)->confirmButtonText('Merge People'),
             (new Actions\UpdateStatus)->confirmButtonText('Update Status'),
         ];
     }

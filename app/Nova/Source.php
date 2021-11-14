@@ -62,6 +62,7 @@ class Source extends Resource
     public function fields(Request $request)
     {
         return [
+            Select::make('Status', 'status')->options(['Auto-Draft', 'Draft', 'Review', 'Published', 'Retired']),
             TextLinked::make('Title')->link($this)->sortable(),
             BelongsToManyField::make('Creators', 'creators', Person::class),
             Text::make('Publisher')->sortable(),
