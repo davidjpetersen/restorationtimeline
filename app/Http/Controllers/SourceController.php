@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Source;
+use App\Models\Page;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -15,7 +16,11 @@ class SourceController extends Controller
      */
     public function index()
     {
-        return Inertia::render('Sources/Sources');
+        $pages = Page::all();
+
+        return Inertia::render('Sources/Sources', [
+            'pages' => $pages,
+        ]);
     }
 
     /**

@@ -1,5 +1,5 @@
 <template>
-    <app-layout title="Dashboard">
+    <app-layout title="Dashboard" :pages="pages">
         <div class="bg-white">
             <hero />
             <carousel title="Historical Periods" :items="items"/>
@@ -37,6 +37,9 @@ export default defineComponent({
         AppLayout,
         Hero,
         Carousel,
+    },
+    props: {
+        pages: Array,
     },
     data() {
         return {

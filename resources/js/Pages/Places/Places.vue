@@ -1,5 +1,5 @@
 <template>
-    <app-layout title="Places">
+    <app-layout title="Places" :pages="pages">
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
 
@@ -18,6 +18,9 @@
         name: 'Places',
         components: {
             AppLayout,
+        },
+        props: {
+            pages: Array,
         },
     })
 </script>

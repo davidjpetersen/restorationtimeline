@@ -10,12 +10,13 @@
     "require": {
         "php": "^7.3|^8.0",
         "benjacho/belongs-to-many-field": "^2.0",
-        "coroowicaksono/chart-js-integration": "^0.3.5",
         "ebess/advanced-nova-media-library": "^3.6",
         "fruitcake/laravel-cors": "^2.0",
         "genealabs/nova-map-marker-field": "^0.3.1",
+        "gregoriohc/laravel-nova-theme-responsive": "^0.8.1",
         "guzzlehttp/guzzle": "^7.0.1",
         "inertiajs/inertia-laravel": "^0.4.3",
+        "kalnoy/nestedset": "^6.0",
         "laravel/framework": "^8.65",
         "laravel/jetstream": "^2.4",
         "laravel/nova": "*",
@@ -24,11 +25,12 @@
         "league/flysystem-aws-s3-v3": "^1.0",
         "martinjuul/many-to-many": "^1.0",
         "mauricewijnia/nova-maps-address": "^1.3",
-        "nikans/text-linked": "^1.0",
+        "restoration/google-book-search": "*",
+        "rinvex/laravel-categories": "^6.0",
+        "sbine/route-viewer": "^0.0.7",
         "simonhamp/laravel-nova-csv-import": "^0.2.0",
         "spatie/nova-backup-tool": "^4.1",
-        "tightenco/ziggy": "^1.0",
-        "restoration/google-book-search": "*"
+        "tightenco/ziggy": "^1.0"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.6",

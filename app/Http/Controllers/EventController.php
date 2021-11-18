@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Event;
+use App\Models\Page;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -15,7 +16,11 @@ class EventController extends Controller
      */
     public function index()
     {
-        return Inertia::render('Events/Events');
+        $pages = Page::all();
+
+        return Inertia::render('Events/Events', [
+            'pages' => $pages,
+        ]);
     }
 
     /**

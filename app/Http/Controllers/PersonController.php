@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Person;
+use App\Models\Page;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -15,7 +16,11 @@ class PersonController extends Controller
      */
     public function index()
     {
-        return Inertia::render('People/People');
+        $pages = Page::all();
+
+        return Inertia::render('People/People', [
+            'pages' => $pages,
+        ]);
     }
 
     /**

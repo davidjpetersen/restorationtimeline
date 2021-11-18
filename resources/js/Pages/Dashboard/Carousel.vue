@@ -4,14 +4,13 @@
         :numVisible="5"
         :numScroll="5"
         :responsiveOptions="responsiveOptions"
-        :indicatorsContentClass="hidden"
-        class="pb-3"
+        indicatorsContentClass="hide-indicators"
+        class="pb-3 mb-8"
     >
         <template #header>
             <h1 class="font-extrabold text-lg uppercase ml-12">{{ title }}</h1>
         </template>
         <template #item="slotProps">
-
             <Link :href="route('event', { eventId: slotProps.data.id })">
                 <img
                     :src="slotProps.data.image"
@@ -31,7 +30,10 @@ import { Link } from "@inertiajs/inertia-vue3";
 
 export default {
     components: { Button, Carousel, Link, Skeleton },
-    props: ['title', 'items'],
+    props: ["title", "items"],
+    mounted() {
+
+    },
     data() {
         return {
             responsiveOptions: [
@@ -55,7 +57,3 @@ export default {
     },
 };
 </script>
-
-<style lang="scss" scoped>
-
-</style>

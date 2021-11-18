@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Organization;
+use App\Models\Page;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -15,7 +16,11 @@ class OrganizationController extends Controller
      */
     public function index()
     {
-        //
+        $pages = Page::all();
+
+        return Inertia::render('Organizations/Organizations', [
+            'pages' => $pages,
+        ]);
     }
 
     /**

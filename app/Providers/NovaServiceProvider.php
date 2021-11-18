@@ -92,6 +92,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
         return [
             new LaravelNovaCsvImport,
             new \Spatie\BackupTool\BackupTool(),
+            new \Sbine\RouteViewer\RouteViewer,
         ];
     }
 

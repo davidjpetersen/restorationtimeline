@@ -16,6 +16,9 @@ class CreatePagesTable extends Migration
         Schema::create('pages', function (Blueprint $table) {
             $table->id();
             $table->enum('status', ['Auto-Draft', 'Draft', 'Review', 'Published', 'Retired'])->nullable();
+            $table->string('slug')->nullable();
+            $table->string('name')->nullable();
+            $table->string('description')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

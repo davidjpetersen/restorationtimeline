@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+use App\Models\Page;
 
 class DashboardController extends Controller
 {
@@ -15,7 +16,11 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        return Inertia::render('Dashboard/Dashboard');
+        $pages = Page::all();
+
+        return Inertia::render('Dashboard/Dashboard', [
+            'pages' => $pages,
+        ]);
     }
 
 }

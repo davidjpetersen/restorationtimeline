@@ -26,39 +26,14 @@
                                 "
                             >
                                 <jet-nav-link
-                                    :href="route('dashboard')"
-                                    :active="route().current('dashboard')"
+                                    v-for="page in pages"
+                                    :key="page.id"
+                                    :href="page.slug"
+                                    :active="route().current(page.slug)"
                                 >
-                                    Dashboard
+                                    {{page.name}}
                                 </jet-nav-link>
-
-                                <jet-nav-link
-                                    :href="route('events')"
-                                    :active="route().current('events')"
-                                >
-                                    Events
-                                </jet-nav-link>
-
-                                <jet-nav-link
-                                    :href="route('people')"
-                                    :active="route().current('people')"
-                                >
-                                    People
-                                </jet-nav-link>
-
-                                <jet-nav-link
-                                    :href="route('places')"
-                                    :active="route().current('places')"
-                                >
-                                    Places
-                                </jet-nav-link>
-
-                                <jet-nav-link
-                                    :href="route('sources')"
-                                    :active="route().current('sources')"
-                                >
-                                    Sources
-                                </jet-nav-link>
+ 
                             </div>
                         </div>
 
@@ -600,8 +575,8 @@ import { Head, Link } from "@inertiajs/inertia-vue3";
 export default defineComponent({
     props: {
         title: String,
+        pages: Array,
     },
-
     components: {
         Head,
         JetBanner,
@@ -611,14 +586,17 @@ export default defineComponent({
         JetResponsiveNavLink,
         Link,
     },
-
     data() {
         return {
             showingNavigationDropdown: false,
         };
     },
-
     methods: {
+
+        logout() {
+            this.$inertia.post(route("logout"));
+        },
+        
         switchToTeam(team) {
             this.$inertia.put(
                 route("current-team.update"),
@@ -631,9 +609,6 @@ export default defineComponent({
             );
         },
 
-        logout() {
-            this.$inertia.post(route("logout"));
-        },
     },
 });
 </script>

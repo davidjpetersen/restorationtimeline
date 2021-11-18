@@ -31,19 +31,23 @@ Route::get('/', function () {
     ]);
 });
 
+Route::get('/novaredirect', function () {
+    return redirect('/nova');
+})->name('nova');
+
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/events', [EventController::class, 'index'])->name('events');
     Route::get('/events/{eventId}', [EventController::class, 'show'])->name('event');
 
-    Route::get('/people', [PersonController::class, 'show'])->name('people');
+    Route::get('/people', [PersonController::class, 'index'])->name('people');
     Route::get('/people/{personId}', [PersonController::class, 'show'])->name('person');
 
-    Route::get('/places', [PlaceController::class, 'show'])->name('places');
+    Route::get('/places', [PlaceController::class, 'index'])->name('places');
     Route::get('/places/{placeId}', [PlaceController::class, 'show'])->name('place');
 
-    Route::get('sources', [SourceController::class, 'show'])->name('sources');
+    Route::get('sources', [SourceController::class, 'index'])->name('sources');
     Route::get('sources/{sourceId}', [SourceController::class, 'show'])->name('source');
 
 });
