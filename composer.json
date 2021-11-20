@@ -25,7 +25,6 @@
         "league/flysystem-aws-s3-v3": "^1.0",
         "martinjuul/many-to-many": "^1.0",
         "mauricewijnia/nova-maps-address": "^1.3",
-        "restoration/google-book-search": "*",
         "rinvex/laravel-categories": "^6.0",
         "sbine/route-viewer": "^0.0.7",
         "simonhamp/laravel-nova-csv-import": "^0.2.0",
@@ -85,10 +84,6 @@
         "nova": {
             "type": "path",
             "url": "./nova"
-        },
-        "0": {
-            "type": "path",
-            "url": "./nova-components/GoogleBookSearch"
         }
     }
 }

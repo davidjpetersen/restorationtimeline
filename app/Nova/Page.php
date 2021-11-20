@@ -5,6 +5,7 @@ namespace App\Nova;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Textarea;
+use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Page extends Resource
@@ -45,6 +46,7 @@ class Page extends Resource
             Text::make(__('Name'), 'name')->sortable(),
             Text::make(__('Slug'), 'slug')->rules('required')->sortable(),
             Textarea::make(__('Description'), 'Description')->alwaysShow(),
+            BelongsToMany::make(__('Rows'), 'page_rows')
         ];
     }
 
@@ -62,7 +64,7 @@ class Page extends Resource
     /**
      * Get the filters available for the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\yHttp\Request  $request
      * @return array
      */
     public function filters(Request $request)
