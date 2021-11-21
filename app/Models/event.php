@@ -6,16 +6,15 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Person;
 use App\Models\Source;
+use App\Models\Carousel;
 
 class Event extends Model
 {
     use HasFactory;
 
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array
-     */
+  
+    public static $label = 'Events';
+    public static $singularLabel = 'Event';
     protected $casts = [
         'identifer' => 'array',
         'sameAs' => 'array',
@@ -39,4 +38,14 @@ class Event extends Model
         return $this->belongsToMany(Source::class, 'event_source', 'eventID', 'sourceID')->withPivot(['pageNumber']);
     }
 
+    /**
+     * Get all of the carousels for the event.
+     */
+    public function carousels()
+    {
+        return $this->morphMany(Carousel::class, 'carouselable')->singularLabel('Carousel');
+    }
+
+
+    
 }

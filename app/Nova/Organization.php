@@ -14,6 +14,10 @@ use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Organization extends Resource
 {
+
+    public static $label = 'Organizations';
+    public static $singularLabel = 'Organization';
+    
     /**
      * The model the resource corresponds to.
      *

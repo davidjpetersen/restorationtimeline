@@ -16,6 +16,10 @@ use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Place extends Resource
 {
+
+    public static $label = 'Places';
+    public static $singularLabel = 'Place';
+
     /**
      * The model the resource corresponds to.
      *

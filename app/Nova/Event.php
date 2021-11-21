@@ -11,11 +11,17 @@ use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Textarea;
 use Laravel\Nova\Fields\Stack;
+use App\Nova\Source;
+use App\Nova\Person;
 use App\Nova\Metrics\EventCount;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Event extends Resource
 {
+
+    public static $label = 'People';
+    public static $singularLabel = 'Person';
+
     /**
      * The model the resource corresponds to.
      *
@@ -64,7 +70,7 @@ class Event extends Resource
             Date::make('Start Date', 'startDate')->onlyOnForms(),
             Date::make('End Date', 'endDate')->onlyOnForms(),
 
-            BelongsToMany::make('Sources', 'sources', 'App\Nova\Source')
+            BelongsToMany::make('Sources', 'sources', Source::class)
             ->fields(function() {
                 return [
                     Text::make('Page Number', 'pageNumber'),   
@@ -74,7 +80,8 @@ class Event extends Resource
                 return $pivots;
             }) 
             ->pivots(),
-            BelongsToMany::make('People', 'people', 'App\Nova\Person'),
+            BelongsToMany::make('People', 'people', Person::class),
+
         ];
     }
 

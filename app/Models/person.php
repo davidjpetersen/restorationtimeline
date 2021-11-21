@@ -5,12 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Source;
+use App\Models\Carousel;
 
 class Person extends Model
 {
     use HasFactory;
-
-
+    
     /**
      * Get the user's full name.
      *
@@ -28,4 +28,14 @@ class Person extends Model
     {
         return $this->belongsToMany(Source::class, 'person_source');
     }
+
+
+    /**
+     * Get all of the carousels for the event.
+     */
+    public function carousels()
+    {
+        return $this->morphMany(Carousel::class, 'carouselable');
+    }
+
 }

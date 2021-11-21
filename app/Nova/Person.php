@@ -16,6 +16,10 @@ use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Person extends Resource
 {
+
+    public static $label = 'People';
+    public static $singularLabel = 'Person';
+    
     /**
      * The model the resource corresponds to.
      *

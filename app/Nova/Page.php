@@ -46,7 +46,6 @@ class Page extends Resource
             Text::make(__('Name'), 'name')->sortable(),
             Text::make(__('Slug'), 'slug')->rules('required')->sortable(),
             Textarea::make(__('Description'), 'Description')->alwaysShow(),
-            BelongsToMany::make(__('Rows'), 'page_rows')
         ];
     }
 

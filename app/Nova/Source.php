@@ -23,6 +23,11 @@ use Nikans\TextLinked\TextLinked;
 
 class Source extends Resource
 {
+
+
+    public static $label = 'Sources';
+    public static $singularLabel = 'Source';
+    
     /**
      * The model the resource corresponds to.
      *

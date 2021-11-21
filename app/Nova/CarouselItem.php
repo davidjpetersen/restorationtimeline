@@ -3,20 +3,24 @@
 namespace App\Nova;
 
 use Illuminate\Http\Request;
-use Laravel\Nova\Fields\Gravatar;
-use Laravel\Nova\Fields\ID;
-use Laravel\Nova\Fields\Password;
-use Laravel\Nova\Fields\Text;
-use App\Nova\Metrics\UserCount;
 
-class User extends Resource
+use App\Nova\Event;
+use App\Nova\Organization;
+use App\Nova\Person;
+use App\Nova\Place;
+use App\Nova\Source;
+
+use Laravel\Nova\Fields\MorphTo;
+use Laravel\Nova\Http\Requests\NovaRequest;
+
+class CarouselItem extends Resource
 {
     /**
      * The model the resource corresponds to.
      *
      * @var string
      */
-    public static $model = \App\Models\User::class;
+    public static $model = \App\Models\CarouselItem::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.
@@ -31,7 +35,6 @@ class User extends Resource
      * @var array
      */
     public static $search = [
-        'name', 'email',
     ];
 
     /**
@@ -43,19 +46,14 @@ class User extends Resource
     public function fields(Request $request)
     {
         return [
-            Gravatar::make()->maxWidth(50),
-            Text::make('Name')
-                ->sortable()
-                ->rules('required', 'max:255'),
-            Text::make('Email')
-                ->sortable()
-                ->rules('required', 'email', 'max:254')
-                ->creationRules('unique:users,email')
-                ->updateRules('unique:users,email,{{resourceId}}'),
-            Password::make('Password')
-                ->onlyOnForms()
-                ->creationRules('required', 'string', 'min:8')
-                ->updateRules('nullable', 'string', 'min:8'),
+            MorphTo::make('Carouselable')->types([
+                Event::class,
+                Organization::class,
+                Person::class,
+                Place::class,
+                Source::class,
+            ]),
+
         ];
     }
 
@@ -67,9 +65,7 @@ class User extends Resource
      */
     public function cards(Request $request)
     {
-        return [
-           new UserCount,
-        ];
+        return [];
     }
 
     /**
@@ -102,8 +98,6 @@ class User extends Resource
      */
     public function actions(Request $request)
     {
-        return [
-            (new Actions\UpdateStatus)->confirmButtonText('Update Status'),
-        ];
+        return [];
     }
 }
