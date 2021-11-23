@@ -4,6 +4,7 @@ namespace App\Nova;
 
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\ID;
+use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Textarea;
 use Laravel\Nova\Fields\DateTime;
@@ -51,15 +52,12 @@ class Organization extends Resource
     {
         return [
             Select::make('Status', 'status')->options(['Auto-Draft', 'Draft', 'Review', 'Published', 'Retired']),
-            TextLinked::make('Name')
-                ->link($this)
-                ->sortable(),
+            Text::make('Name')->sortable(),
             Text::make('Alternative Name', 'alternativeName'),
             Textarea::make('Description')
                 ->hideFromIndex(),
             Textarea::make('Disambiguating Description', 'disambiguatingDescription')
                 ->hideFromIndex(),
-            Textarea::make('Text')->hideFromIndex(),
             MapsAddress::make('Address', 'address')
                 ->zoom(4)
                 ->center(['lat' => 38.850033, 'lng' => -87.6500523])

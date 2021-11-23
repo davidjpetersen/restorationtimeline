@@ -21,9 +21,9 @@ class CreateOrganizationsTable extends Migration
             $table->text('disambiguatingDescription')->nullable();
             $table->text('address')->nullable();
             $table->dateTime('foundingDate')->nullable();
-            $table->string('foundingLocation');
+            $table->string('foundingLocation')->nullable();
             $table->dateTime('dissolutionDate')->nullable();
-            $table->string('dissolutionLocation');
+            $table->string('dissolutionLocation')->nullable();
             $table->string('faxNumber')->nullable();
             $table->string('email')->nullable();
             $table->string('telephone')->nullable();

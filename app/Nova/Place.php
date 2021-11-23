@@ -11,6 +11,7 @@ use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Textarea;
 use Laravel\Nova\Fields\Stack;
 use Laravel\Nova\Fields\Line;
+use Laravel\Nova\Fields\Select;
 use App\Nova\Metrics\PlaceCount;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
@@ -65,6 +66,7 @@ class Place extends Resource
                 ->center(['lat' => 38.850033, 'lng' => -87.6500523])->hideFromIndex(),
             Stack::make('Address', [
                 Line::make('Address')->asHeading()->resolveUsing(function () {
+                    if (is_null($this->resource->address["formatted_address"])) { return ''; }
                     $address = $this->resource->address["formatted_address"];
                     $firstComma = strpos($address, ",");
                     return substr($this->resource->address["formatted_address"], 0, $firstComma);
@@ -80,16 +82,7 @@ class Place extends Resource
             Text::make('Slogan')->hideFromIndex(),
             Text::make('Url')->withMeta(['extraAttributes' => ['type' => 'url']])->hideFromIndex(),
             Text::make('Tour Booking Page', 'tourBookingPage')->withMeta(['extraAttributes' => ['type' => 'url']])->hideFromIndex(),
-            // KeyValue::make('Identifier')
-            //     ->rules('json')
-            //     ->keyLabel('Item') // Customize the key heading
-            //     ->valueLabel('Label') // Customize the value heading
-            //     ->actionText('Add Item'), // Customize the "add row" button text,
-            // KeyValue::make('Same As')
-            //     ->rules('json')
-            //     ->keyLabel('Item') // Customize the key heading
-            //     ->valueLabel('Label') // Customize the value heading
-            //     ->actionText('Add Item'), // Customize the "add row" button text,
+
         ];
     }
 

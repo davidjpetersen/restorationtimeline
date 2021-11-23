@@ -55,7 +55,7 @@ class Event extends Resource
     {
         return [
             Select::make('Status', 'status')->options(['Auto-Draft', 'Draft', 'Review', 'Published', 'Retired']),
-            Textarea::make('Event Name', 'name')->alwaysShow(),
+            Text::make('Event Name', 'name'),
             
             // ->resolveUsing(function () {
             //     return Str::limit($this->resource->name, 30);

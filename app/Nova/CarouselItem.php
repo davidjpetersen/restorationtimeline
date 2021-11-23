@@ -10,6 +10,7 @@ use App\Nova\Person;
 use App\Nova\Place;
 use App\Nova\Source;
 
+use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\MorphTo;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
@@ -46,6 +47,8 @@ class CarouselItem extends Resource
     public function fields(Request $request)
     {
         return [
+
+            BelongsTo::make('Carousel'),
             MorphTo::make('Carouselable')->types([
                 Event::class,
                 Organization::class,

@@ -10,6 +10,7 @@
     "require": {
         "php": "^7.3|^8.0",
         "benjacho/belongs-to-many-field": "^2.0",
+        "david-griffiths/nova-dark-theme": "^1.0",
         "ebess/advanced-nova-media-library": "^3.6",
         "fruitcake/laravel-cors": "^2.0",
         "genealabs/nova-map-marker-field": "^0.3.1",

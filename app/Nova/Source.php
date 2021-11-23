@@ -19,7 +19,6 @@ use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Textarea;
-use Nikans\TextLinked\TextLinked;
 
 class Source extends Resource
 {
@@ -68,7 +67,7 @@ class Source extends Resource
     {
         return [
             Select::make('Status', 'status')->options(['Auto-Draft', 'Draft', 'Review', 'Published', 'Retired']),
-            TextLinked::make('Title')->link($this)->sortable(),
+            Text::make('Title')->sortable(),
             BelongsToManyField::make('Creators', 'creators', Person::class),
             Text::make('Publisher')->sortable(),
             Number::make('Copyright Year', 'copyrightYear')->min(1)->max(2500)->sortable(),

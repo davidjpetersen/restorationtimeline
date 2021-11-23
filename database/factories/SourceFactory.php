@@ -14,7 +14,10 @@ class SourceFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'title' => $this->faker->title,
+            'decription' => $this->faker->paragraph,
+            'keywords' => $this->faker->words($nb = 3, $asText = false)->implode(', ') ,
+            'status' => $this->faker->randomElement($array = array ('Auto-Draft', 'Draft', 'Review', 'Published', 'Retired'))
         ];
     }
 }

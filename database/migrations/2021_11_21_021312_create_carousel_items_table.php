@@ -20,7 +20,7 @@ class CreateCarouselItemsTable extends Migration
             $table->string('name')->nullable();
             $table->text('description')->nullable();
             $table->morphs('carouselable');
-            $table->integer('sort_order');
+            $table->integer('sort_order')->nullable();
             $table->timestamps();
         });
     }

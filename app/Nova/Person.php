@@ -10,7 +10,6 @@ use Laravel\Nova\Fields\KeyValue;
 use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Textarea;
-use Nikans\TextLinked\TextLinked;
 use App\Nova\Metrics\PersonCount;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
@@ -55,7 +54,7 @@ class Person extends Resource
         return [
             Select::make('Status', 'status')->options(['Auto-Draft', 'Draft', 'Review', 'Published', 'Retired']),
             Text::make('Honorific Prefix', 'honorificPrefix')->hideFromIndex(),
-            TextLinked::make('Full Name')->link($this)->sortable()->exceptOnForms(),
+            Text::make('Full Name')->sortable()->exceptOnForms(),
             Text::make('Given Name', 'givenName')->sortable()->hideFromIndex(),
             Text::make('Additional Name', 'additionalName')->sortable()->hideFromIndex(),
             Text::make('Family Name', 'familyName')->sortable()->hideFromIndex(),
