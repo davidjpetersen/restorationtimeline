@@ -48,7 +48,7 @@ class CarouselItem extends Resource
     {
         return [
 
-            BelongsTo::make('Carousel'),
+            BelongsTo::make('Carousel')->searchable(),
             MorphTo::make('Carouselable')->types([
                 Event::class,
                 Organization::class,
