@@ -35,6 +35,12 @@ Route::get('/novaredirect', function () {
     return redirect('/nova');
 })->name('nova');
 
+Route::get('analyze', [DashboardController::class, 'analyze']);
+Route::get('print', [DashboardController::class, 'print']);
+Route::get('improve/{qid}', [PersonController::class, 'improve'])->where('qid', 'Q[1-9]\d*');
+Route::get('seed', [PersonController::class, 'seed']);
+
+
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');

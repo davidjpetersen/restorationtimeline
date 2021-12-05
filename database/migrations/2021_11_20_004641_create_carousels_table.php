@@ -17,6 +17,7 @@ class CreateCarouselsTable extends Migration
             $table->id();
             $table->string('name')->nullable();
             $table->text('description')->nullable();
+            $table->integer('sort_order')->nullable();
             $table->timestamps();
         });
     }

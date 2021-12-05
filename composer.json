@@ -12,6 +12,8 @@
         "benjacho/belongs-to-many-field": "^2.0",
         "david-griffiths/nova-dark-theme": "^1.0",
         "ebess/advanced-nova-media-library": "^3.6",
+        "enlightn/enlightn": "^1.22",
+        "freearhey/wikidata": "^3.6",
         "fruitcake/laravel-cors": "^2.0",
         "genealabs/nova-map-marker-field": "^0.3.1",
         "gregoriohc/laravel-nova-theme-responsive": "^0.8.1",

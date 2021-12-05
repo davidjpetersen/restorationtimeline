@@ -12,3 +12,7 @@
 .p-carousel-indicators{
     display: none!important;
 }
+
+.product-image {
+    max-width: 480px;
+}

@@ -6,9 +6,20 @@ use App\Models\Person;
 use App\Models\Page;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+use Wikidata\Wikidata;
 
 class PersonController extends Controller
 {
+
+    public $entity = null;
+    public $wikidata = null; 
+
+    public function __construct() {
+
+        $this->wikidata = new Wikidata();
+        
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -24,27 +35,6 @@ class PersonController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
      * Display the specified resource.
      *
      * @param  \App\Models\Person  $person
@@ -55,37 +45,58 @@ class PersonController extends Controller
         return Inertia::render('People/Person');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Person  $person
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(person $person)
-    {
-        //
+    public function getEntity($qid) {
+        $this->entity = $this->wikidata->get($qid)->properties->toArray();
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Person  $person
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, person $person)
-    {
-        //
+    public function getStringProperty($key) {
+        $stringProperty = $this->entity[$key]->values[0]->label ?? null;
+        return $stringProperty;
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Person  $person
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(person $person)
-    {
-        //
+    public function getDateProperty($key) {
+        $stringProperty = $this->getStringProperty($key);
+        $dateProperty = date('Y-m-d', strtotime($stringProperty));
+        return $dateProperty;
     }
+
+    public function improve($qid) {
+
+        $this->getEntity($qid);
+
+        $person = Person::updateOrCreate(
+            [ 'wikidata' => $qid ],
+            [
+                'status' => 3, // Set status to manual review.
+                'honorificPrefix' => $this->getStringProperty("P511"),
+                'givenName' => $this->getStringProperty("P735"),
+                'additionalName' => $this->getStringProperty("P4970"),
+                'familyName' => $this->getStringProperty("P734"),
+                'honorificSuffix' => $this->getStringProperty("P1035"),
+                'gender' => $this->getStringProperty("P21"),
+                'wikidata' => $qid,
+                'birthDate' => $this->getDateProperty("P569"),
+                'birthPlace' => $this->getStringProperty("P19"),
+                'deathDate' => $this->getDateProperty("P570"),
+                'deathPlace' => $this->getStringProperty("20"),
+            ]
+        );
+
+        return $person;
+        
+    }
+
+    public function seed() {
+        
+
+        foreach ($qids as $qid) {
+            ob_implicit_flush(true);
+            echo "<br/>Processing $qid";
+            ob_flush();
+            $person = $this->improve($qid);
+            echo " --> ".$person->fullName;
+        }
+        echo "<br/>Done";
+    }
+
 }

@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Nova\Page;
+use App\Models\Carousel;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,8 +16,6 @@ use App\Nova\Page;
 |
 */
 
-
-
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
     Route::get('/user', function (Request $request) {
@@ -24,8 +23,14 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     });
 
     Route::get('/pages', function (Request $request) {
-        
         return Page::all();
     });
 
+    
+
+});
+
+Route::get('/carousel/{id}', function (Request $request, $id) {
+    $carousel = Carousel::findOrFail($id);
+    return $carousel;
 });

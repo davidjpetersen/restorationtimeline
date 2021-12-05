@@ -18,6 +18,7 @@ class CreateCarouselItemsTable extends Migration
             $table->id();
             $table->foreignIdFor(Carousel::class);
             $table->string('name')->nullable();
+            $table->string('image')->nullable();
             $table->text('description')->nullable();
             $table->morphs('carouselable');
             $table->integer('sort_order')->nullable();

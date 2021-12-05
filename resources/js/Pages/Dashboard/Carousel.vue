@@ -13,7 +13,7 @@
         <template #item="slotProps">
             <Link :href="route('event', { eventId: slotProps.data.id })">
                 <img
-                    :src="slotProps.data.image"
+                    :src="'https://restorationtimeline.s3.amazonaws.com/'+slotProps.data.image"
                     :alt="slotProps.data.name"
                     class="product-image"
                 />
@@ -32,7 +32,7 @@ export default {
     components: { Button, Carousel, Link, Skeleton },
     props: ["title", "items"],
     mounted() {
-
+        // console.log(this);
     },
     data() {
         return {

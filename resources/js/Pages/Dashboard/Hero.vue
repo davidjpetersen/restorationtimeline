@@ -31,6 +31,7 @@ export default {
     data() {
         return {
             headline: [
+                "What have you missed",
                 "Dig into the history of the Restoration.",
                 "Explore the Restoration.",
                 "It's time to go deeper.",

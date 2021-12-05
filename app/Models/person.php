@@ -12,6 +12,18 @@ class Person extends Model
     use HasFactory;
     
     /**
+     * The attributes that are NOT mass assignable.
+     *
+     * @var array
+     */
+    protected $guarded = ['id'];
+    protected $appends = ['fullName'];
+    protected $casts = [
+        'birthDate' => 'datetime:Y-m-d',
+        'deathDate' => 'datetime:Y-m-d',
+    ];
+
+    /**
      * Get the user's full name.
      *
      * @return string

@@ -25,9 +25,9 @@ class CreatePeopleTable extends Migration
             $table->string('address')->nullable();
             $table->string('affiliation')->nullable();
             $table->string('alumniOf')->nullable();
-            $table->dateTime('birthDate')->nullable();
+            $table->dateTimeTz('birthDate')->nullable();
             $table->string('birthPlace')->nullable();
-            $table->dateTime('deathDate')->nullable();
+            $table->dateTimeTz('deathDate')->nullable();
             $table->string('deathPlace')->nullable();
             $table->string('email')->nullable();
             $table->string('telephone')->nullable();
@@ -35,7 +35,7 @@ class CreatePeopleTable extends Migration
             $table->string('gender')->nullable();
             $table->integer('height')->nullable();
             $table->integer('weight')->nullable();
-            $table->json('identifier')->nullable();
+            $table->string('wikidata')->nullable();
             $table->json('sameAs')->nullable();
             $table->enum('status', ['Auto-Draft', 'Draft', 'Review', 'Published', 'Retired'])->nullable();
             $table->timestamps();
