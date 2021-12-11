@@ -1,9 +1,9 @@
 <template>
     <Carousel
         :value="items"
-        :numVisible="5"
-        :numScroll="5"
         :responsiveOptions="responsiveOptions"
+        :numVisible="3" 
+        :numScroll="3"
         indicatorsContentClass="hide-indicators"
         class="pb-3 mb-8"
     >
@@ -11,13 +11,7 @@
             <h1 class="font-extrabold text-lg uppercase ml-12">{{ title }}</h1>
         </template>
         <template #item="slotProps">
-            <Link :href="route('event', { eventId: slotProps.data.id })">
-                <img
-                    :src="'https://restorationtimeline.s3.amazonaws.com/'+slotProps.data.image"
-                    :alt="slotProps.data.name"
-                    class="product-image"
-                />
-            </Link>
+            <PersonCarouselItem :person="slotProps.data" />
         </template>
     </Carousel>
 </template>
@@ -27,28 +21,21 @@ import Button from "primevue/button";
 import Carousel from "primevue/carousel";
 import Skeleton from "primevue/skeleton";
 import { Link } from "@inertiajs/inertia-vue3";
+import PersonCarouselItem from "../People/PersonCarouselItem.vue";
 
 export default {
-    components: { Button, Carousel, Link, Skeleton },
+    components: { Button, Carousel, Link, Skeleton, PersonCarouselItem },
     props: ["title", "items"],
-    mounted() {
-        // console.log(this);
-    },
     data() {
         return {
             responsiveOptions: [
-                {
-                    breakpoint: "1024px",
-                    numVisible: 3,
-                    numScroll: 3,
-                },
                 {
                     breakpoint: "600px",
                     numVisible: 2,
                     numScroll: 2,
                 },
                 {
-                    breakpoint: "480px",
+                    breakpoint: "480",
                     numVisible: 1,
                     numScroll: 1,
                 },

@@ -81,7 +81,7 @@ class PersonController extends Controller
                 'deathPlace' => $this->getStringProperty("20"),
             ]
         );
-
+        echo $qid . "\n";
         return $person;
         
     }

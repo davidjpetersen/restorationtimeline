@@ -7,6 +7,7 @@ use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Textarea;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Http\Requests\NovaRequest;
+use Maatwebsite\LaravelNovaExcel\Actions\DownloadExcel;
 
 class Carousel extends Resource
 {
@@ -45,7 +46,7 @@ class Carousel extends Resource
         return [
             Text::make(__('Name'), 'name')->sortable(),
             Textarea::make(__('Description'), 'description')->alwaysShow(),
-            HasMany::make('Carousel Items'),
+            HasMany::make('Carousel Items', 'carousel_items'),
         ];
     }
 
@@ -90,6 +91,8 @@ class Carousel extends Resource
      */
     public function actions(Request $request)
     {
-        return [];
+        return [
+            new DownloadExcel,
+        ];
     }
 }

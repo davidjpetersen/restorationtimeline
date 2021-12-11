@@ -10,6 +10,13 @@ class Carousel extends Model
 {
     use HasFactory;
 
+
+    protected $appends = ['items'];
+
+    public function getItemsAttribute() {
+        return $this->carousel_items()->get();
+    }
+
     /**
      * Get all of the items for the carousel.
      */

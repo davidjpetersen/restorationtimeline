@@ -12,6 +12,7 @@ use Nikans\TextLinked\TextLinked;
 use Mauricewijnia\NovaMapsAddress\MapsAddress;
 use App\Nova\Metrics\OrganizationCount;
 use Laravel\Nova\Http\Requests\NovaRequest;
+use Maatwebsite\LaravelNovaExcel\Actions\DownloadExcel;
 
 class Organization extends Resource
 {
@@ -135,6 +136,7 @@ class Organization extends Resource
     {
         return [
             (new Actions\UpdateStatus)->confirmButtonText('Update Status'),
+            new DownloadExcel,
         ];
     }
 }

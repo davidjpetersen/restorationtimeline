@@ -20,6 +20,9 @@ class CreateCarouselItemsTable extends Migration
             $table->string('name')->nullable();
             $table->string('image')->nullable();
             $table->text('description')->nullable();
+            $table->text('title')->nullable();
+            $table->text('subtitle')->nullable();
+            $table->text('color')->nullable();
             $table->morphs('carouselable');
             $table->integer('sort_order')->nullable();
             $table->timestamps();

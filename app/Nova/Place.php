@@ -14,6 +14,7 @@ use Laravel\Nova\Fields\Line;
 use Laravel\Nova\Fields\Select;
 use App\Nova\Metrics\PlaceCount;
 use Laravel\Nova\Http\Requests\NovaRequest;
+use Maatwebsite\LaravelNovaExcel\Actions\DownloadExcel;
 
 class Place extends Resource
 {
@@ -131,6 +132,7 @@ class Place extends Resource
     {
         return [
             (new Actions\UpdateStatus)->confirmButtonText('Update Status'),
+            new DownloadExcel,
         ];
     }
 }

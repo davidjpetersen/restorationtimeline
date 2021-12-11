@@ -15,6 +15,7 @@ use App\Nova\Source;
 use App\Nova\Person;
 use App\Nova\Metrics\EventCount;
 use Laravel\Nova\Http\Requests\NovaRequest;
+use Maatwebsite\LaravelNovaExcel\Actions\DownloadExcel;
 
 class Event extends Resource
 {
@@ -130,6 +131,7 @@ class Event extends Resource
     {
         return [
             (new Actions\UpdateStatus)->confirmButtonText('Update Status'),
+            new DownloadExcel,
         ];
     }
 }

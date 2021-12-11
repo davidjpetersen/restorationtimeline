@@ -2,7 +2,7 @@
     <app-layout title="Dashboard" :pages="pages" :carousels="carousels" class="bg-white">
 
             <hero />
-            <carousel :title="carousel.name" v-for="carousel in carousels" :key="carousel.id" :items="carousel.carousel_items"/>
+            <carousel :title="carousel.name" v-for="carousel in carousels" :key="carousel.id" :items="carousel.items"/>
 
     </app-layout>
 </template>

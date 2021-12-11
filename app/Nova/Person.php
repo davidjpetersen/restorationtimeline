@@ -12,6 +12,7 @@ use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Textarea;
 use App\Nova\Metrics\PersonCount;
 use Laravel\Nova\Http\Requests\NovaRequest;
+use Maatwebsite\LaravelNovaExcel\Actions\DownloadExcel;
 
 class Person extends Resource
 {
@@ -53,14 +54,15 @@ class Person extends Resource
     {
         return [
             Select::make('Status', 'status')->options(['Auto-Draft', 'Draft', 'Review', 'Published', 'Retired']),
-            Text::make('Honorific Prefix', 'honorificPrefix')->hideFromIndex(),
-            Text::make('Full Name')->sortable()->exceptOnForms(),
-            Text::make('Given Name', 'givenName')->sortable()->hideFromIndex(),
-            Text::make('Additional Name', 'additionalName')->sortable()->hideFromIndex(),
-            Text::make('Family Name', 'familyName')->sortable()->hideFromIndex(),
-            Text::make('Maiden Name', 'maidenName')->sortable()->hideFromIndex(),
-            Text::make('Also Known As', 'alsoKnownAs')->sortable()->hideFromIndex(),
-            Text::make('Honorific Suffix', 'honorificSuffix')->sortable()->hideFromIndex(),
+            Text::make('Wikidata'),
+            Text::make('Honorific Prefix', 'honorificPrefix')->onlyOnForms(),
+            Text::make('Full Name')->sortable()->showOnIndex()->showOnDetail(),
+            Text::make('Given Name', 'givenName')->sortable()->onlyOnForms(),
+            Text::make('Additional Name', 'additionalName')->sortable()->onlyOnForms(),
+            Text::make('Family Name', 'familyName')->sortable()->onlyOnForms(),
+            Text::make('Maiden Name', 'maidenName')->sortable()->onlyOnForms(),
+            Text::make('Also Known As', 'alsoKnownAs')->sortable()->onlyOnForms(),
+            Text::make('Honorific Suffix', 'honorificSuffix')->sortable()->onlyOnForms(),
             Text::make('Affiliation')->sortable()->hideFromIndex(),
             Date::make('Birth Date', 'birthDate')->sortable(),
             Date::make('Death Date', 'deathDate')->sortable(),
@@ -116,9 +118,10 @@ class Person extends Resource
     public function actions(Request $request)
     {
         return [
-            (new Actions\EnhancePerson)->confirmButtonText('Enhance Person'),
+            (new Actions\EnhancePerson)->confirmButtonText('Enhance Person')->onlyOnDetail(),
             (new Actions\MergeItems)->confirmButtonText('Merge People'),
             (new Actions\UpdateStatus)->confirmButtonText('Update Status'),
+            new DownloadExcel,
         ];
     }
 }

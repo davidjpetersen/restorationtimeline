@@ -11,8 +11,12 @@ use App\Nova\Place;
 use App\Nova\Source;
 
 use Laravel\Nova\Fields\BelongsTo;
+use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\MorphTo;
+use Laravel\Nova\Fields\Image;
 use Laravel\Nova\Http\Requests\NovaRequest;
+use Yna\NovaSwatches\Swatches;
+use Maatwebsite\LaravelNovaExcel\Actions\DownloadExcel;
 
 class CarouselItem extends Resource
 {
@@ -55,8 +59,11 @@ class CarouselItem extends Resource
                 Person::class,
                 Place::class,
                 Source::class,
-            ]),
-
+            ])->searchable(),
+            Text::make('Title'),
+            Text::make('Subtitle'),
+            Swatches::make('Color')->colors(['#005370', '#599286','#e05e1b', '#e8ab98', '#f19e20']),
+            Image::make('Image')->disk('s3'),
         ];
     }
 
@@ -101,6 +108,8 @@ class CarouselItem extends Resource
      */
     public function actions(Request $request)
     {
-        return [];
+        return [
+            new DownloadExcel, 
+        ];
     }
 }

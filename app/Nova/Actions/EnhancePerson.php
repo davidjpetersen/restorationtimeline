@@ -6,8 +6,10 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Support\Collection;
+use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Actions\Action;
 use Laravel\Nova\Fields\ActionFields;
+use App\Http\Controllers\PersonController;
 
 class EnhancePerson extends Action
 {
@@ -22,7 +24,7 @@ class EnhancePerson extends Action
      */
     public function handle(ActionFields $fields, Collection $models)
     {
-        //
+        
     }
 
     /**
@@ -32,6 +34,8 @@ class EnhancePerson extends Action
      */
     public function fields()
     {
-        return [];
+        return [
+            Text::make('Wikidata'),
+        ];
     }
 }

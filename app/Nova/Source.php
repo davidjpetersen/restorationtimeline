@@ -19,6 +19,7 @@ use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Textarea;
+use Maatwebsite\LaravelNovaExcel\Actions\DownloadExcel;
 
 class Source extends Resource
 {
@@ -134,6 +135,7 @@ class Source extends Resource
     {
         return [
             (new Actions\UpdateStatus)->confirmButtonText('Update Status'),
+            new DownloadExcel,
         ];
     }
 }
