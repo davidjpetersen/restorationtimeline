@@ -14,13 +14,13 @@ class Carousel extends Model
     protected $appends = ['items'];
 
     public function getItemsAttribute() {
-        return $this->carousel_items()->get();
+        return $this->items()->get();
     }
 
     /**
      * Get all of the items for the carousel.
      */
-    public function carousel_items()
+    public function items()
     {
         return $this->hasMany(CarouselItem::class);
     }

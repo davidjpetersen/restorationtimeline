@@ -15,12 +15,49 @@ class CarouselItemSeeder extends Seeder
      */
     public function run()
     {
+        $this->historicalPeriods();
         $this->seedPluralWives();
+    }
+
+    public function historicalPeriods()
+    {
+        $carousel = Carousel::where('name', "Historical Periods")->first();
+        $carouselItems = [
+            new CarouselItem(['title' => 'Before Joseph Smith', 'subtitle' => '', 'image' => '', 'color' => '#005370']),
+            new CarouselItem(['title' => 'Joseph Smith\'s Early Life', 'subtitle' => '', 'image' => '', 'color' => '#599286']),
+            new CarouselItem(['title' => 'New York Period', 'subtitle' => '', 'image' => '', 'color' => '#e05e1b']),
+            new CarouselItem(['title' => 'Kirtland, Ohio', 'subtitle' => '', 'image' => '', 'color' => '#e8ab98']),
+            new CarouselItem(['title' => 'Far West, Missouri', 'subtitle' => '', 'image' => '', 'color' => '#f19e20']),
+            new CarouselItem(['title' => 'Nauvoo, Illinois', 'subtitle' => '', 'image' => '', 'color' => '#005370']),
+            new CarouselItem(['title' => 'The Exodous', 'subtitle' => '', 'image' => '', 'color' => '#599286']),
+            new CarouselItem(['title' => 'Utah Period', 'subtitle' => '', 'image' => '', 'color' => '#e05e1b']),
+        ];
+
+        $carousel->items()->saveMany($carouselItems);
+
+    }
+
+    public function translationProjects()
+    {
+        $carousel = Carousel::where('name', "Joseph Smith Translation Projects")->first();
+        $carouselItems = [
+            new CarouselItem(['title' => 'The Book of Lehi', 'subtitle' => '116 Lost Pages', 'image' => '', 'color' => '#005370']),
+            new CarouselItem(['title' => 'The Book of Mormon', 'subtitle' => '', 'image' => '', 'color' => '#005370']),
+            new CarouselItem(['title' => 'The New Translation of the Holy Bible', 'subtitle' => '', 'image' => '', 'color' => '#599286']),
+            new CarouselItem(['title' => 'The Book of Abraham', 'subtitle' => '', 'image' => '', 'color' => '#e05e1b']),
+            new CarouselItem(['title' => 'The Kinderhook Plates', 'subtitle' => '', 'image' => '', 'color' => '#e8ab98']),
+            new CarouselItem(['title' => 'The Lost Account of John', 'subtitle' => '', 'image' => '', 'color' => '#f19e20']),
+            new CarouselItem(['title' => 'Specimen of Pure Language', 'subtitle' => '', 'image' => '', 'color' => '#005370']),
+            new CarouselItem(['title' => 'The Kirtland Egyptian Grammar', 'subtitle' => '', 'image' => '', 'color' => '#599286']),
+         ];
+
+        $carousel->items()->saveMany($carouselItems);
+
     }
 
     public function seedPluralWives()
     {
-        $carousel = Carousel::where('name', "Joseph Smith's Polygamy")->first();
+        $carousel = Carousel::where('name', "Plural Wives of Joseph Smith")->first();
         $carouselItems = [
             new CarouselItem(['title' => 'Emma Hale', 'subtitle' => '', 'image' => '', 'color' => '#005370', 'carouselable_type' => 'App\Models\Person', 'carouselable_id' => 16 ]),
             new CarouselItem(['title' => 'Fanny Alger', 'subtitle' => '', 'image' => '', 'color' => '#599286', 'carouselable_type' => 'App\Models\Person', 'carouselable_id' => 11 ]),

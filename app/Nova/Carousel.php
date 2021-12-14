@@ -46,7 +46,7 @@ class Carousel extends Resource
         return [
             Text::make(__('Name'), 'name')->sortable(),
             Textarea::make(__('Description'), 'description')->alwaysShow(),
-            HasMany::make('Carousel Items', 'carousel_items'),
+            HasMany::make('Carousel Items', 'items'),
         ];
     }
 

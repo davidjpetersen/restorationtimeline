@@ -23,7 +23,7 @@ class CreateCarouselItemsTable extends Migration
             $table->text('title')->nullable();
             $table->text('subtitle')->nullable();
             $table->text('color')->nullable();
-            $table->morphs('carouselable');
+            $table->nullableMorphs('carouselable');
             $table->integer('sort_order')->nullable();
             $table->timestamps();
         });
