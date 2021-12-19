@@ -1,12 +1,6 @@
 <template>
-    <div class="w-full">
-        <img
-            class="h-96 w-full object-cover"
-            :src="
-                'https://restorationtimeline.s3.amazonaws.com/' + person.image
-            "
-            alt="image"
-        />
+    <div class="block w-96 h-96 min-h-96 p-4 text-white" :style="{ backgroundColor: person.color}">
+       {{person.title}} 
     </div>
 </template>
 

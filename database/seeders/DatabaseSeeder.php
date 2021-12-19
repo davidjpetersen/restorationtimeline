@@ -3,9 +3,6 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Database\Seeders\CarouselSeeder;
-// use Database\Seeders\PersonSeeder;
-use Database\Seeders\UserSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -20,6 +17,7 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             CarouselSeeder::class,
             CarouselItemSeeder::class,
+            PageSeeder::class,
             PersonSeeder::class,
         ]);
     }
